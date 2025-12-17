@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Logika Proposisi</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="materi-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-brain logo-icon"></i>
+                Logika Proposisi
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="home.html" class="nav-link">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a href="materi.html" class="nav-link active">MATH</a>
+                </li>
+                <li class="nav-item">
+                    <a href="kalkulator.html" class="nav-link">APLY</a>
+                </li>
+                <li class="nav-item">
+                    <a href="exam.html" class="nav-link">EXAM</a>
+                </li>
+                <li class="nav-item">
+                    <a href="games.html" class="nav-link">GAMES</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Materi Container -->
+    <div class="materi-container">
+        <!-- Sidebar Navigasi Materi -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3><i class="fas fa-book"></i> Daftar Materi</h3>
+            </div>
+            <ul class="materi-menu">
+                <li><a href="#pengertian" class="materi-link active"><i class="fas fa-info-circle"></i> Pengertian</a></li>
+                <li><a href="#operator" class="materi-link"><i class="fas fa-sliders-h"></i> Operator Logika</a></li>
+                <li><a href="#konjungsi" class="materi-link"><i class="fas fa-and"></i> Konjungsi</a></li>
+                <li><a href="#disjungsi" class="materi-link"><i class="fas fa-or"></i> Disjungsi</a></li>
+                <li><a href="#implikasi" class="materi-link"><i class="fas fa-arrow-right"></i> Implikasi</a></li>
+                <li><a href="#biimplikasi" class="materi-link"><i class="fas fa-arrows-alt-h"></i> Biimplikasi</a></li>
+                <li><a href="#negasi" class="materi-link"><i class="fas fa-not-equal"></i> Negasi</a></li>
+                <li><a href="#tautologi" class="materi-link"><i class="fas fa-check-double"></i> Tautologi & Kontradiksi</a></li>
+                <li><a href="#aplikasi" class="materi-link"><i class="fas fa-laptop-code"></i> Aplikasi Komputer</a></li>
+            </ul>
+        </aside>
+
+        <!-- Konten Materi -->
+        <main class="materi-content">
+            <!-- Pengertian -->
+            <section id="pengertian" class="materi-section active">
+                <h2><i class="fas fa-info-circle"></i> APA ITU LOGIKA PROPOSISI?</h2>
+                <div class="materi-card">
+                    <h3>Konsep Dasar Logika Proposisi</h3>
+                    <p><strong>Logika Proposisi</strong> mempelajari pernyataan (proposisi) yang dapat bernilai <span class="highlight">benar (true)</span> atau <span class="highlight">salah (false)</span>.</p>
+                    
+                    <div class="definisi-box">
+                        <h4><i class="fas fa-lightbulb"></i> Definisi:</h4>
+                        <p>Proposisi adalah kalimat deklaratif yang memiliki nilai kebenaran, yaitu benar atau salah, tetapi tidak keduanya.</p>
+                    </div>
+                    
+                    <h4>Contoh Proposisi:</h4>
+                    <div class="contoh-grid">
+                        <div class="contoh-card true">
+                            <p>"2 + 2 = 4"</p>
+                            <span class="status">Benar</span>
+                        </div>
+                        <div class="contoh-card false">
+                            <p>"Bumi berbentuk persegi"</p>
+                            <span class="status">Salah</span>
+                        </div>
+                        <div class="contoh-card true">
+                            <p>"Jakarta adalah ibu kota Indonesia"</p>
+                            <span class="status">Benar</span>
+                        </div>
+                    </div>
+                    
+                    <h4>Proposisi Majemuk:</h4>
+                    <p>Gabungan dari dua atau lebih proposisi sederhana yang dihubungkan dengan operator logika.</p>
+                    <div class="contoh-box">
+                        <p><strong>Contoh:</strong> "Hari ini hujan <span class="operator">∧</span> saya bawa payung"</p>
+                        <p class="simbol">P: "Hari ini hujan", Q: "Saya bawa payung" → (P ∧ Q)</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Operator Logika -->
+            <section id="operator" class="materi-section">
+                <h2><i class="fas fa-sliders-h"></i> OPERATOR DALAM LOGIKA PROPOSISI</h2>
+                <div class="materi-card">
+                    <p>Operator logika digunakan untuk menghubungkan proposisi-proposisi menjadi proposisi majemuk.</p>
+                    
+                    <div class="operator-grid">
+                        <div class="operator-card">
+                            <div class="operator-icon">
+                                <i class="fas fa-and"></i>
+                            </div>
+                            <h4>Konjungsi (∧)</h4>
+                            <p>Operator "DAN"</p>
+                            <span class="simbol">p ∧ q</span>
+                        </div>
+                        <div class="operator-card">
+                            <div class="operator-icon">
+                                <i class="fas fa-or"></i>
+                            </div>
+                            <h4>Disjungsi (∨)</h4>
+                            <p>Operator "ATAU"</p>
+                            <span class="simbol">p ∨ q</span>
+                        </div>
+                        <div class="operator-card">
+                            <div class="operator-icon">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <h4>Implikasi (→)</h4>
+                            <p>Operator "JIKA-MAKA"</p>
+                            <span class="simbol">p → q</span>
+                        </div>
+                        <div class="operator-card">
+                            <div class="operator-icon">
+                                <i class="fas fa-arrows-alt-h"></i>
+                            </div>
+                            <h4>Biimplikasi (↔)</h4>
+                            <p>Operator "JIKA DAN HANYA JIKA"</p>
+                            <span class="simbol">p ↔ q</span>
+                        </div>
+                        <div class="operator-card">
+                            <div class="operator-icon">
+                                <i class="fas fa-not-equal"></i>
+                            </div>
+                            <h4>Negasi (¬)</h4>
+                            <p>Operator "TIDAK"</p>
+                            <span class="simbol">¬p</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Konjungsi -->
+            <section id="konjungsi" class="materi-section">
+                <h2><i class="fas fa-and"></i> KONJUNGSI (∧)</h2>
+                <div class="materi-card">
+                    <h3>Penggabungan dua pernyataan p dan q menggunakan kata hubung logika "DAN"</h3>
+                    
+                    <div class="definisi-box">
+                        <h4><i class="fas fa-cogs"></i> Notasi: p ∧ q</h4>
+                        <p>Dibaca: "p dan q"</p>
+                    </div>
+                    
+                    <div class="kebenaran-box">
+                        <h4><i class="fas fa-check-circle"></i> Nilai Kebenaran:</h4>
+                        <div class="kebenaran-grid">
+                            <div class="kebenaran-item true">
+                                <span class="kondisi">p = Benar, q = Benar</span>
+                                <span class="hasil">p ∧ q = <strong>Benar</strong></span>
+                            </div>
+                            <div class="kebenaran-item false">
+                                <span class="kondisi">p = Benar, q = Salah</span>
+                                <span class="hasil">p ∧ q = <strong>Salah</strong></span>
+                            </div>
+                            <div class="kebenaran-item false">
+                                <span class="kondisi">p = Salah, q = Benar</span>
+                                <span class="hasil">p ∧ q = <strong>Salah</strong></span>
+                            </div>
+                            <div class="kebenaran-item false">
+                                <span class="kondisi">p = Salah, q = Salah</span>
+                                <span class="hasil">p ∧ q = <strong>Salah</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Tabel Kebenaran Konjungsi:</h4>
+                    <div class="table-container">
+                        <table class="truth-table">
+                            <thead>
+                                <tr>
+                                    <th>p</th>
+                                    <th>q</th>
+                                    <th>p ∧ q</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>B (Benar)</td>
+                                    <td>B</td>
+                                    <td class="true-cell">B</td>
+                                </tr>
+                                <tr>
+                                    <td>B</td>
+                                    <td>S (Salah)</td>
+                                    <td class="false-cell">S</td>
+                                </tr>
+                                <tr>
+                                    <td>S</td>
+                                    <td>B</td>
+                                    <td class="false-cell">S</td>
+                                </tr>
+                                <tr>
+                                    <td>S</td>
+                                    <td>S</td>
+                                    <td class="false-cell">S</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h4>Contoh Penerapan dalam Komputer:</h4>
+                    <div class="aplikasi-box">
+                        <p><strong>Kondisi login:</strong> <span class="code">if (username_valid && password_valid) { login(); }</span></p>
+                        <p>Login hanya berhasil jika username valid DAN password valid.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Disjungsi -->
+            <section id="disjungsi" class="materi-section">
+                <h2><i class="fas fa-or"></i> DISJUNGSI (∨)</h2>
+                <div class="materi-card">
+                    <h3>Penggabungan dua pernyataan p dan q menggunakan kata hubung logika "ATAU"</h3>
+                    
+                    <div class="definisi-box">
+                        <h4><i class="fas fa-cogs"></i> Notasi: p ∨ q</h4>
+                        <p>Dibaca: "p atau q"</p>
+                    </div>
+                    
+                    <div class="kebenaran-box">
+                        <h4><i class="fas fa-check-circle"></i> Nilai Kebenaran:</h4>
+                        <div class="kebenaran-grid">
+                            <div class="kebenaran-item true">
+                                <span class="kondisi">p = Benar, q = Benar</span>
+                                <span class="hasil">p ∨ q = <strong>Benar</strong></span>
+                            </div>
+                            <div class="kebenaran-item true">
+                                <span class="kondisi">p = Benar, q = Salah</span>
+                                <span class="hasil">p ∨ q = <strong>Benar</strong></span>
+                            </div>
+                            <div class="kebenaran-item true">
+                                <span class="kondisi">p = Salah, q = Benar</span>
+                                <span class="hasil">p ∨ q = <strong>Benar</strong></span>
+                            </div>
+                            <div class="kebenaran-item false">
+                                <span class="kondisi">p = Salah, q = Salah</span>
+                                <span class="hasil">p ∨ q = <strong>Salah</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Tabel Kebenaran Disjungsi:</h4>
+                    <div class="table-container">
+                        <table class="truth-table">
+                            <thead>
+                                <tr>
+                                    <th>p</th>
+                                    <th>q</th>
+                                    <th>p ∨ q</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>B</td>
+                                    <td>B</td>
+                                    <td class="true-cell">B</td>
+                                </tr>
+                                <tr>
+                                    <td>B</td>
+                                    <td>S</td>
+                                    <td class="true-cell">B</td>
+                                </tr>
+                                <tr>
+                                    <td>S</td>
+                                    <td>B</td>
+                                    <td class="true-cell">B</td>
+                                </tr>
+                                <tr>
+                                    <td>S</td>
+                                    <td>S</td>
+                                    <td class="false-cell">S</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h4>Contoh Penerapan dalam Komputer:</h4>
+                    <div class="aplikasi-box">
+                        <p><strong>Kondisi diskon:</strong> <span class="code">if (is_member || total_purchase > 500000) { apply_discount(); }</span></p>
+                        <p>Diskon diberikan jika pelanggan adalah member ATAU total pembelian lebih dari 500.000.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Implikasi -->
+            <section id="implikasi" class="materi-section">
+                <h2><i class="fas fa-arrow-right"></i> IMPLIKASI (→)</h2>
+                <div class="materi-card">
+                    <h3>Kalimat majemuk dengan kata hubung "JIKA ... MAKA ..."</h3>
+                    
+                    <div class="definisi-box">
+                        <h4><i class="fas fa-cogs"></i> Notasi: p → q</h4>
+                        <p>Dibaca: "Jika p maka q"</p>
+                    </div>
+                    
+                    <div class="kebenaran-box">
+                        <h4><i class="fas fa-check-circle"></i> Nilai Kebenaran:</h4>
+                        <div class="kebenaran-grid">
+                            <div class="kebenaran-item true">
+                                <span class="kondisi">p = Benar, q = Benar</span>
+                                <span class="hasil">p → q = <strong>Benar</strong></span>
+                            </div>
+                            <div class="kebenaran-item false">
+                                <span class="kondisi">p = Benar, q = Salah</span>
+                                <span class="hasil">p → q = <strong>Salah</strong></span>
+                            </div>
+                            <div class="kebenaran-item true">
+                                <span class="kondisi">p = Salah, q = Benar</span>
+                                <span class="hasil">p → q = <strong>Benar</strong></span>
+                            </div>
+                            <div class="kebenaran-item true">
+                                <span class="kondisi">p = Salah, q = Salah</span>
+                                <span class="hasil">p → q = <strong>Benar</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Tabel Kebenaran Implikasi:</h4>
+                    <div class="table-container">
+                        <table class="truth-table">
+                            <thead>
+                                <tr>
+                                    <th>p</th>
+                                    <th>q</th>
+                                    <th>p → q</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>B</td>
+                                    <td>B</td>
+                                    <td class="true-cell">B</td>
+                                </tr>
+                                <tr>
+                                    <td>B</td>
+                                    <td>S</td>
+                                    <td class="false-cell">S</td>
+                                </tr>
+                                <tr>
+                                    <td>S</td>
+                                    <td>B</td>
+                                    <td class="true-cell">B</td>
+                                </tr>
+                                <tr>
+                                    <td>S</td>
+                                    <td>S</td>
+                                    <td class="true-cell">B</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h4>Contoh Penerapan dalam Komputer:</h4>
+                    <div class="aplikasi-box">
+                        <p><strong>Contoh dari PPT:</strong></p>
+                        <p>p: "Program dijalankan"<br>
+                        q: "Output ditampilkan"<br>
+                        Implikasi: <span class="code">if (program_dijalankan) { tampilkan_output(); }</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Biimplikasi -->
+            <section id="biimplikasi" class="materi-section">
+                <h2><i class="fas fa-arrows-alt-h"></i> BIIMPLIKASI (↔)</h2>
+                <div class="materi-card">
+                    <h3>Kalimat majemuk dengan kata hubung "JIKA DAN HANYA JIKA"</h3>
+                    
+                    <div class="definisi-box">
+                        <h4><i class="fas fa-cogs"></i> Notasi: p ↔ q</h4>
+                        <p>Dibaca: "p jika dan hanya jika q"</p>
+                    </div>
+                    
+                    <div class="kebenaran-box">
+                        <h4><i class="fas fa-check-circle"></i> Nilai Kebenaran:</h4>
+                        <div class="kebenaran-grid">
+                            <div class="kebenaran-item true">
+                                <span class="kondisi">p = Benar, q = Benar</span>
+                                <span class="hasil">p ↔ q = <strong>Benar</strong></span>
+                            </div>
+                            <div class="kebenaran-item false">
+                                <span class="kondisi">p = Benar, q = Salah</span>
+                                <span class="hasil">p ↔ q = <strong>Salah</strong></span>
+                            </div>
+                            <div class="kebenaran-item false">
+                                <span class="kondisi">p = Salah, q = Benar</span>
+                                <span class="hasil">p ↔ q = <strong>Salah</strong></span>
+                            </div>
+                            <div class="kebenaran-item true">
+                                <span class="kondisi">p = Salah, q = Salah</span>
+                                <span class="hasil">p ↔ q = <strong>Benar</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Tabel Kebenaran Biimplikasi:</h4>
+                    <div class="table-container">
+                        <table class="truth-table">
+                            <thead>
+                                <tr>
+                                    <th>p</th>
+                                    <th>q</th>
+                                    <th>p ↔ q</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>B</td>
+                                    <td>B</td>
+                                    <td class="true-cell">B</td>
+                                </tr>
+                                <tr>
+                                    <td>B</td>
+                                    <td>S</td>
+                                    <td class="false-cell">S</td>
+                                </tr>
+                                <tr>
+                                    <td>S</td>
+                                    <td>B</td>
+                                    <td class="false-cell">S</td>
+                                </tr>
+                                <tr>
+                                    <td>S</td>
+                                    <td>S</td>
+                                    <td class="true-cell">B</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h4>Contoh Penerapan dalam Komputer:</h4>
+                    <div class="aplikasi-box">
+                        <p><strong>Validasi input:</strong> <span class="code">if ((email_valid && password_valid) ↔ login_allowed) { proceed(); }</span></p>
+                        <p>Login diperbolehkan jika dan hanya jika email valid dan password valid.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Negasi -->
+            <section id="negasi" class="materi-section">
+                <h2><i class="fas fa-not-equal"></i> NEGASI (¬)</h2>
+                <div class="materi-card">
+                    <h3>Kebalikan dari suatu proposisi</h3>
+                    
+                    <div class="definisi-box">
+                        <h4><i class="fas fa-cogs"></i> Notasi: ¬p atau ~p</h4>
+                        <p>Dibaca: "tidak p" atau "bukan p"</p>
+                    </div>
+                    
+                    <div class="kebenaran-box">
+                        <h4><i class="fas fa-check-circle"></i> Nilai Kebenaran:</h4>
+                        <div class="kebenaran-grid">
+                            <div class="kebenaran-item false">
+                                <span class="kondisi">p = Benar</span>
+                                <span class="hasil">¬p = <strong>Salah</strong></span>
+                            </div>
+                            <div class="kebenaran-item true">
+                                <span class="kondisi">p = Salah</span>
+                                <span class="hasil">¬p = <strong>Benar</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Tabel Kebenaran Negasi:</h4>
+                    <div class="table-container">
+                        <table class="truth-table">
+                            <thead>
+                                <tr>
+                                    <th>p</th>
+                                    <th>¬p</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>B</td>
+                                    <td class="false-cell">S</td>
+                                </tr>
+                                <tr>
+                                    <td>S</td>
+                                    <td class="true-cell">B</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h4>Contoh Penerapan dalam Komputer:</h4>
+                    <div class="aplikasi-box">
+                        <p><strong>Validasi input:</strong> <span class="code">if (!input_is_empty) { process_input(); }</span></p>
+                        <p>Proses input jika input tidak kosong (negasi dari "input kosong").</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tautologi dan Kontradiksi -->
+            <section id="tautologi" class="materi-section">
+                <h2><i class="fas fa-check-double"></i> TAUTOLOGI, KONTRADIKSI, DAN KONTINGENSI</h2>
+                <div class="materi-card">
+                    <div class="kategori-grid">
+                        <div class="kategori-card tautologi">
+                            <div class="kategori-header">
+                                <i class="fas fa-check-circle"></i>
+                                <h4>Tautologi</h4>
+                            </div>
+                            <p><strong>Selalu bernilai benar</strong> pada semua kondisi</p>
+                            <div class="contoh-box">
+                                <p>Contoh: p ∨ ¬p</p>
+                                <p>"p atau tidak p" selalu benar</p>
+                            </div>
+                            <div class="aplikasi">
+                                <strong>Aplikasi:</strong> Validasi algoritma, safety check
+                            </div>
+                        </div>
+                        
+                        <div class="kategori-card kontradiksi">
+                            <div class="kategori-header">
+                                <i class="fas fa-times-circle"></i>
+                                <h4>Kontradiksi</h4>
+                            </div>
+                            <p><strong>Selalu bernilai salah</strong> pada semua kondisi</p>
+                            <div class="contoh-box">
+                                <p>Contoh: p ∧ ¬p</p>
+                                <p>"p dan tidak p" selalu salah</p>
+                            </div>
+                            <div class="aplikasi">
+                                <strong>Aplikasi:</strong> Deteksi error logika
+                            </div>
+                        </div>
+                        
+                        <div class="kategori-card kontingensi">
+                            <div class="kategori-header">
+                                <i class="fas fa-random"></i>
+                                <h4>Kontingensi</h4>
+                            </div>
+                            <p><strong>Kadang benar, kadang salah</strong></p>
+                            <div class="contoh-box">
+                                <p>Contoh: p → q</p>
+                                <p>Tergantung nilai p dan q</p>
+                            </div>
+                            <div class="aplikasi">
+                                <strong>Aplikasi:</strong> Kondisi bersyarat dalam program
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Aplikasi Komputer -->
+            <section id="aplikasi" class="materi-section">
+                <h2><i class="fas fa-laptop-code"></i> APLIKASI DALAM KOMPUTER</h2>
+                <div class="materi-card">
+                    <h3>Pengaplikasian Logika Proposisi dalam Pemrograman</h3>
+                    
+                    <div class="aplikasi-grid">
+                        <div class="aplikasi-item">
+                            <div class="aplikasi-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h4>Struktur Kondisi</h4>
+                            <p>Penggunaan if-else statement berdasarkan operasi logika</p>
+                            <pre><code>if (is_logged_in && has_permission) {
+    // eksekusi kode
+}</code></pre>
+                        </div>
+                        
+                        <div class="aplikasi-item">
+                            <div class="aplikasi-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h4>Validasi Input</h4>
+                            <p>Pemeriksaan kebenaran data input pengguna</p>
+                            <pre><code>if (!email.isEmpty() && email.contains("@")) {
+    // email valid
+}</code></pre>
+                        </div>
+                        
+                        <div class="aplikasi-item">
+                            <div class="aplikasi-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h4>Query Database</h4>
+                            <p>Penggunaan operator logika dalam SQL</p>
+                            <pre><code>SELECT * FROM users 
+WHERE status = 'active' 
+AND (role = 'admin' OR role = 'supervisor')</code></pre>
+                        </div>
+                        
+                        <div class="aplikasi-item">
+                            <div class="aplikasi-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h4>Kecerdasan Buatan</h4>
+                            <p>Logika proposisi dalam sistem pakar dan inferensi</p>
+                            <pre><code>IF fever AND cough THEN diagnose = 'flu'</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="study-case">
+                        <h4><i class="fas fa-coffee"></i> Studi Kasus: Platform Kopi Online</h4>
+                        <p>Seperti disebutkan dalam PPT: "Usaha kopi butuh platform online yang hemat"</p>
+                        <div class="case-example">
+                            <p><strong>Contoh aturan bisnis:</strong></p>
+                            <ul>
+                                <li>IF (pembelian > 50000 AND member = true) THEN berikan_diskon(10%)</li>
+                                <li>IF (stok_kopi > 0 OR stok_alternatif > 0) THEN tampilkan_tersedia</li>
+                                <li>IF (pembayaran_valid ↔ order_diproses) THEN update_status</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-brain"></i>
+                    <span>Logika Proposisi</span>
+                </div>
+                <p class="footer-description">
+                    Materi pembelajaran logika proposisi dan aplikasinya dalam komputer
+                </p>
+                <div class="team-footer">
+                    <strong>Kelompok 1:</strong> Hawari, Abimanyu, Rifka
+                </div>
+                <p class="copyright">
+                    &copy; 2024 Logika Proposisi - All rights reserved
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="materi-script.js"></script>
+</body>
+</html>
