@@ -1,0 +1,583 @@
+/* Materi Container */
+.materi-container {
+    display: flex;
+    min-height: calc(100vh - 150px);
+    max-width: 1400px;
+    margin: 30px auto;
+    gap: 30px;
+    padding: 0 20px;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 280px;
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+}
+
+.sidebar-header {
+    padding-bottom: 15px;
+    border-bottom: 2px solid #FF801A;
+    margin-bottom: 20px;
+}
+
+.sidebar-header h3 {
+    color: #2c3e50;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.materi-menu {
+    list-style: none;
+}
+
+.materi-menu li {
+    margin-bottom: 8px;
+}
+
+.materi-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    text-decoration: none;
+    color: #4a5568;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 16px;
+}
+
+.materi-link:hover {
+    background-color: #f0f0f0;
+    color: #FF801A;
+}
+
+.materi-link.active {
+    background-color: #FF801A;
+    color: white;
+    font-weight: 600;
+}
+
+.materi-link i {
+    width: 20px;
+    text-align: center;
+}
+
+/* Materi Content */
+.materi-content {
+    flex: 1;
+    background: white;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.materi-section {
+    display: none;
+}
+
+.materi-section.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.materi-content h2 {
+    color: #2c3e50;
+    font-size: 28px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #FF801A;
+}
+
+.materi-card {
+    margin-bottom: 40px;
+}
+
+.materi-card h3 {
+    color: #34495e;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.materi-card h4 {
+    color: #2c3e50;
+    font-size: 18px;
+    margin: 25px 0 15px;
+}
+
+.materi-card p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #4a5568;
+    margin-bottom: 15px;
+}
+
+/* Highlight */
+.highlight {
+    background-color: #fff3cd;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+/* Definisi Box */
+.definisi-box {
+    background: #e8f4fc;
+    border-left: 4px solid #3498db;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.definisi-box h4 {
+    color: #2980b9;
+    margin-top: 0 !important;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Contoh Grid */
+.contoh-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.contoh-card {
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    position: relative;
+}
+
+.contoh-card.true {
+    background: #d4edda;
+    border: 2px solid #c3e6cb;
+    color: #155724;
+}
+
+.contoh-card.false {
+    background: #f8d7da;
+    border: 2px solid #f5c6cb;
+    color: #721c24;
+}
+
+.status {
+    display: block;
+    font-size: 14px;
+    font-weight: normal;
+    margin-top: 5px;
+    opacity: 0.8;
+}
+
+.contoh-box {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    border: 1px solid #e1e5eb;
+}
+
+.operator {
+    color: #FF801A;
+    font-weight: 800;
+    font-size: 20px;
+}
+
+.simbol {
+    font-family: 'Courier New', monospace;
+    background: #000f53ff;
+    color: #ffffffff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-top: 5px;
+    display: inline-block;
+}
+
+/* Operator Grid */
+.operator-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.operator-card {
+    background: white;
+    border: 2px solid #e1e5eb;
+    border-radius: 10px;
+    padding: 25px 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.operator-card:hover {
+    transform: translateY(-5px);
+    border-color: #FF801A;
+    box-shadow: 0 10px 20px rgba(255, 128, 26, 0.1);
+}
+
+.operator-icon {
+    font-size: 40px;
+    color: #FF801A;
+    margin-bottom: 15px;
+}
+
+.operator-card h4 {
+    margin: 10px 0 5px !important;
+    font-size: 20px;
+}
+
+.operator-card p {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin-bottom: 10px !important;
+}
+
+.operator-card .simbol {
+    font-size: 18px;
+    background: #FF801A;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+/* Kebenaran Box */
+.kebenaran-box {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 25px;
+    margin: 25px 0;
+}
+
+.kebenaran-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.kebenaran-item {
+    padding: 15px;
+    border-radius: 8px;
+    border: 2px solid;
+}
+
+.kebenaran-item.true {
+    background: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.kebenaran-item.false {
+    background: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.kondisi {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    opacity: 0.8;
+}
+
+.hasil {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* Table */
+.table-container {
+    overflow-x: auto;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.truth-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    min-width: 300px;
+}
+
+.truth-table th {
+    background: #FF801A;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.truth-table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #e1e5eb;
+    font-size: 16px;
+}
+
+.true-cell {
+    background: #d4edda;
+    color: #155724;
+    font-weight: 600;
+}
+
+.false-cell {
+    background: #f8d7da;
+    color: #721c24;
+    font-weight: 600;
+}
+
+/* Aplikasi Box */
+.aplikasi-box {
+    background: #e8f4fc;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    border-left: 4px solid #3498db;
+}
+
+.code {
+    font-family: 'Courier New', monospace;
+    background: #2c3e50;
+    color: #f8f9fa;
+    padding: 8px 12px;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 5px 0;
+}
+
+/* Kategori Grid */
+.kategori-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.kategori-card {
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.kategori-card:hover {
+    transform: translateY(-5px);
+}
+
+.kategori-card.tautologi {
+    background: linear-gradient(135deg, #d4edda, #c3e6cb);
+    border: 2px solid #28a745;
+}
+
+.kategori-card.kontradiksi {
+    background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+    border: 2px solid #dc3545;
+}
+
+.kategori-card.kontingensi {
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+    border: 2px solid #ffc107;
+}
+
+.kategori-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.kategori-header h4 {
+    margin: 0 !important;
+    font-size: 24px;
+}
+
+.kategori-header i {
+    font-size: 30px;
+}
+
+.tautologi .kategori-header i {
+    color: #28a745;
+}
+
+.kontradiksi .kategori-header i {
+    color: #dc3545;
+}
+
+.kontingensi .kategori-header i {
+    color: #ffc107;
+}
+
+.kategori-card p {
+    font-size: 16px;
+    margin-bottom: 15px !important;
+}
+
+.kategori-card .contoh-box {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+.kategori-card .aplikasi {
+    font-size: 14px;
+    color: #2c3e50;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Aplikasi Grid */
+.aplikasi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.aplikasi-item {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 25px;
+    border: 1px solid #e1e5eb;
+    transition: all 0.3s ease;
+}
+
+.aplikasi-item:hover {
+    border-color: #FF801A;
+    box-shadow: 0 10px 20px rgba(255, 128, 26, 0.1);
+}
+
+.aplikasi-icon {
+    font-size: 40px;
+    color: #FF801A;
+    margin-bottom: 15px;
+}
+
+.aplikasi-item h4 {
+    color: #2c3e50;
+    margin-bottom: 10px !important;
+    font-size: 20px;
+}
+
+.aplikasi-item p {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin-bottom: 15px !important;
+}
+
+.aplikasi-item pre {
+    background: #2c3e50;
+    color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    overflow-x: auto;
+    margin: 0;
+}
+
+/* Study Case */
+.study-case {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 25px;
+    margin: 30px 0;
+    border-left: 4px solid #FF801A;
+}
+
+.study-case h4 {
+    color: #FF801A;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px !important;
+}
+
+.case-example {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 15px;
+}
+
+.case-example ul {
+    list-style: none;
+    padding-left: 20px;
+}
+
+.case-example li {
+    padding: 8px 0;
+    position: relative;
+    padding-left: 25px;
+}
+
+.case-example li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #FF801A;
+    font-weight: bold;
+}
+
+/* Team Footer */
+.team-footer {
+    margin: 15px 0;
+    font-size: 16px;
+    color: #7f8c8d;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .materi-container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        position: static;
+        margin-bottom: 20px;
+    }
+    
+    .materi-content {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .materi-content {
+        padding: 20px;
+    }
+    
+    .materi-content h2 {
+        font-size: 24px;
+    }
+    
+    .kategori-grid,
+    .aplikasi-grid,
+    .operator-grid {
+        grid-template-columns: 1fr;
+    }
+}
