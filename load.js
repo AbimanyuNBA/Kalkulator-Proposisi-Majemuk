@@ -42,12 +42,12 @@ document.addEventListener('DOMContentLoaded', function() {
             navbarContainer.innerHTML = `
                 <nav class="navbar">
                     <div class="nav-container">
-                        <a href="home.html" class="logo">
+                        <a href="index.html" class="logo">
                             <i class="fas fa-brain logo-icon"></i>
                             Logika Proposisi
                         </a>
                         <div class="fallback-menu">
-                            <a href="home.html">HOME</a> | 
+                            <a href="index.html">HOME</a> | 
                             <a href="materi.html">MATH</a> | 
                             <a href="kalkulator.html">APLY</a> | 
                             <a href="exam.html">EXAM</a> | 
