@@ -1,0 +1,1879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logika Proposisi - Platform Pembelajaran Interaktif</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #fff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #FF801A;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 32px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-left: 30px;
+            position: relative;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: #FF801A;
+        }
+
+        .nav-link.active {
+            color: #FF801A;
+            font-weight: 600;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #FF801A;
+            border-radius: 2px;
+        }
+
+        /* Menu Toggle for Mobile */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #FF801A;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 100px 0 80px;
+            text-align: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            margin-top: 20px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255, 128, 26, 0.05)" d="M0,100 L100,0 L100,100 Z"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-title {
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1.1;
+            color: #2c3e50;
+            margin-bottom: 24px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+        }
+
+        .hero-title span {
+            color: #FF801A;
+            position: relative;
+        }
+
+        .hero-title span::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background-color: rgba(255, 128, 26, 0.2);
+            z-index: -1;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: #6e6d7a;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.5;
+            position: relative;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: none;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background-color: #FF801A;
+            color: white;
+            box-shadow: 0 4px 12px rgba(255, 128, 26, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: #e67210;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 128, 26, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: #2c3e50;
+            border: 1px solid #ddd;
+        }
+
+        .btn-secondary:hover {
+            border-color: #FF801A;
+            color: #FF801A;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-visual {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .logic-preview {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logic-symbol {
+            font-size: 40px;
+            font-weight: 700;
+            color: #FF801A;
+            background: #fff5eb;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(255, 128, 26, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .logic-symbol:hover {
+            transform: scale(1.1);
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 800;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: #6e6d7a;
+            max-width: 600px;
+            margin: 0 auto 50px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: left;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #FF801A 0%, #FF9E53 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 30px;
+        }
+
+        .feature-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .feature-description {
+            color: #6e6d7a;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .feature-link {
+            color: #FF801A;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: gap 0.2s;
+        }
+
+        .feature-link:hover {
+            gap: 10px;
+            color: #e67210;
+        }
+
+        /* Video Section */
+        .video-section {
+            padding: 80px 0;
+            text-align: center;
+            /* background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); */
+            border-radius: 20px;
+            margin: 40px 0;
+        }
+
+        .video-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-header {
+            padding: 25px 30px;
+            background: linear-gradient(135deg, #FF801A 0%, #FF9E53 100%);
+            color: white;
+        }
+
+        .video-header h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .video-duration {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-content {
+            padding: 30px;
+            background: white;
+        }
+
+        .video-content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .content-column h4 {
+            color: #2c3e50;
+            font-size: 18px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-column ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .content-column li {
+            color: #6e6d7a;
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .content-column li:before {
+            content: "•";
+            color: #FF801A;
+            font-size: 20px;
+            position: absolute;
+            left: 0;
+            top: 5px;
+        }
+
+        .video-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+
+        .video-actions .btn {
+            min-width: 180px;
+        }
+
+        #shareVideoBtn {
+            background: #4267B2;
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        #shareVideoBtn:hover {
+            background: #365899;
+            transform: translateY(-2px);
+        }
+
+        /* Institutions Section */
+        .institutions-section {
+            padding: 60px 0 80px;
+            text-align: center;
+            background-color: #fff;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .institutions-title {
+            font-size: 14px;
+            color: #9e9ea7;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 40px;
+        }
+
+        .institutions-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .institution-logo {
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6e6d7a;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        .institution-logo:hover {
+            transform: translateY(-5px);
+            filter: grayscale(0%);
+            opacity: 1;
+            color: #FF801A;
+            border-color: #FF801A;
+            box-shadow: 0 5px 15px rgba(255, 128, 26, 0.1);
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 100px 0;
+            text-align: center;
+            border-radius: 24px;
+            margin-bottom: 80px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #FF801A 0%, #FF9E53 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            color: white;
+            font-size: 36px;
+            box-shadow: 0 6px 20px rgba(255, 128, 26, 0.3);
+        }
+
+        .benefit-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .benefit-description {
+            color: #6e6d7a;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .benefit-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 0;
+            text-align: left;
+            width: 100%;
+        }
+
+        .benefit-list li {
+            padding: 8px 0;
+            color: #6e6d7a;
+            position: relative;
+            padding-left: 25px;
+            font-size: 14px;
+        }
+
+        .benefit-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #FF801A;
+            font-weight: bold;
+        }
+
+        .applications-showcase {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            margin-top: 40px;
+        }
+
+        .applications-title {
+            font-size: 24px;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .application-item {
+            text-align: center;
+            padding: 25px 15px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            transition: all 0.3s;
+        }
+
+        .application-item:hover {
+            background: #fff5eb;
+            transform: translateY(-5px);
+        }
+
+        .app-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            color: white;
+            font-size: 24px;
+        }
+
+        .application-item h4 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .application-item p {
+            color: #6e6d7a;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Learning Path Section */
+        .learning-path {
+            padding: 80px 0;
+            background: #f8f9fa;
+            border-radius: 20px;
+            margin-bottom: 60px;
+        }
+
+        .path-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .path-visual {
+            flex: 1;
+            position: relative;
+        }
+
+        .path-diagram {
+            position: relative;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .path-step {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 0;
+            position: relative;
+        }
+
+        .path-step::before {
+            content: '';
+            position: absolute;
+            left: 25px;
+            top: 100%;
+            height: 30px;
+            width: 2px;
+            background: #FF801A;
+            opacity: 0.3;
+        }
+
+        .path-step:last-child::before {
+            display: none;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: #FF801A;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-text {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 16px;
+        }
+
+        .path-content {
+            flex: 1;
+        }
+
+        .path-content h2 {
+            font-size: 36px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .path-content p {
+            color: #6e6d7a;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        /* Testimonial Section */
+        .testimonial-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 80px;
+            color: #FF801A;
+            opacity: 0.1;
+            font-family: serif;
+        }
+
+        .testimonial-text {
+            font-size: 18px;
+            color: #6e6d7a;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #FF801A 0%, #FF9E53 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .author-info h4 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+
+        .author-info p {
+            color: #6e6d7a;
+            font-size: 14px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #FF801A 0%, #FF9E53 100%);
+            border-radius: 20px;
+            margin-bottom: 60px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .cta-title {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button {
+            background: white;
+            color: #FF801A;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            color: #e67210;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            background-color: #2c3e50;
+            color: white;
+            border-top-left-radius: 40px;
+            border-top-right-radius: 40px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #FF801A;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-logo i {
+            margin-right: 10px;
+            font-size: 32px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-link:hover {
+            color: #FF801A;
+        }
+
+        .team-footer {
+            margin: 15px 0;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+            width: 100%;
+            text-align: center;
+        }
+
+        .team-footer strong {
+            color: #FF801A;
+        }
+
+        .copyright {
+            margin-top: 30px;
+            width: 100%;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .nav-container, .container {
+                padding: 0 30px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 48px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .cta-title {
+                font-size: 36px;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .applications-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .institutions-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 40px 20px;
+            }
+            
+            .path-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .path-content h2 {
+                font-size: 30px;
+            }
+            
+            .video-content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Mobile Menu */
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                gap: 0;
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                z-index: 999;
+                border-radius: 0 0 15px 15px;
+                max-height: calc(100vh - 70px);
+                overflow-y: auto;
+            }
+            
+            .nav-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .nav-item {
+                margin: 0;
+                width: 100%;
+            }
+            
+            .nav-link {
+                display: block;
+                padding: 15px;
+                border-radius: 8px;
+                margin-bottom: 5px;
+                text-align: center;
+            }
+            
+            .nav-link.active::after {
+                display: none;
+            }
+            
+            .nav-link.active {
+                background: rgba(255, 128, 26, 0.1);
+            }
+            
+            /* Hero Section */
+            .hero-title {
+                font-size: 36px;
+            }
+            
+            .hero-subtitle {
+                font-size: 18px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            /* Sections */
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .applications-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .institutions-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            /* Video Section */
+            .video-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .video-actions .btn,
+            #shareVideoBtn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .video-header h3 {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            /* Footer */
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .footer-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 28px;
+            }
+            
+            .hero-subtitle {
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+            }
+            
+            .cta-title {
+                font-size: 28px;
+            }
+            
+            .logic-symbol {
+                width: 60px;
+                height: 60px;
+                font-size: 30px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .institutions-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .institution-logo {
+                height: 35px;
+                font-size: 14px;
+                padding: 8px;
+            }
+            
+            .video-content {
+                padding: 20px;
+            }
+            
+            .content-column h4 {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .logo {
+                font-size: 24px;
+            }
+            
+            .logo-icon {
+                font-size: 28px;
+            }
+            
+            .benefit-card,
+            .feature-card {
+                padding: 20px;
+            }
+            
+            .testimonial {
+                padding: 25px;
+            }
+            
+            .cta-section {
+                padding: 60px 20px;
+            }
+        }
+
+        /* Touch Device Optimization */
+        @media (hover: none) and (pointer: coarse) {
+            .btn,
+            .feature-card,
+            .benefit-card,
+            .application-item,
+            .logic-symbol,
+            .nav-link {
+                min-height: 44px;
+            }
+            
+            .btn {
+                padding: 16px 24px;
+            }
+            
+            .nav-link {
+                padding: 18px 15px;
+            }
+        }
+
+        /* Accessibility */
+        *:focus {
+            outline: 2px solid #FF801A;
+            outline-offset: 2px;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            
+            .cta-section::before {
+                animation: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="home.html" class="logo">
+                <i class="fas fa-brain logo-icon"></i>
+                Logika Proposisi
+            </a>
+            
+            <!-- Menu Toggle for Mobile -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="home.html" class="nav-link active">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a href="materi.html" class="nav-link">MATH</a>
+                </li>
+                <li class="nav-item">
+                    <a href="aply.html" class="nav-link">APLY</a>
+                </li>
+                <li class="nav-item">
+                    <a href="exam.html" class="nav-link">EXAM</a>
+                </li>
+                <li class="nav-item">
+                    <a href="games.html" class="nav-link">GAMES</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">Kuasaikan <span>Logika Proposisi</span> dengan Cara Interaktif</h1>
+            <p class="hero-subtitle">Platform pembelajaran lengkap untuk memahami dasar-dasar logika matematika melalui materi, kalkulator, game, dan ujian yang menyenangkan</p>
+            <div class="cta-buttons">
+                <a href="materi.html" class="btn btn-primary" id="startLearningBtn">
+                    <i class="fas fa-play-circle"></i> Mulai Belajar
+                </a>
+                <button class="btn btn-secondary" id="exploreFeaturesBtn">
+                    <i class="fas fa-compass"></i> Jelajahi Fitur
+                </button>
+            </div>
+            <div class="hero-visual">
+                <div class="logic-preview">
+                    <div class="logic-symbol">∧</div>
+                    <div class="logic-symbol">∨</div>
+                    <div class="logic-symbol">¬</div>
+                    <div class="logic-symbol">→</div>
+                    <div class="logic-symbol">↔</div>
+                    <div class="logic-symbol">⊕</div>
+                </div>
+                <p style="margin-top: 20px; color: #6e6d7a; font-size: 14px; text-align: center;">
+                    Pelajari semua operator logika dasar dengan cara yang mudah dan menyenangkan
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="container">
+        <div class="features-section">
+            <h2 class="section-title">Apa yang Anda Dapatkan</h2>
+            <p class="section-subtitle">Platform lengkap dengan segala yang Anda butuhkan untuk menguasai logika proposisi</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3 class="feature-title">Materi Komprehensif</h3>
+                    <p class="feature-description">Pembahasan lengkap mulai dari dasar logika proposisi, operator logika, tabel kebenaran, hingga aplikasi dalam pemrograman dan matematika.</p>
+                    <a href="materi.html" class="feature-link">
+                        Pelajari Materi <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3 class="feature-title">Kalkulator Logika Interaktif</h3>
+                    <p class="feature-description">Hitung nilai kebenaran dari berbagai operasi logika dengan kalkulator canggih dan lihat tabel kebenaran secara otomatis.</p>
+                    <a href="aply.html" class="feature-link">
+                        Coba Kalkulator <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3 class="feature-title">Game Edukatif</h3>
+                    <p class="feature-description">Tantang diri Anda dengan berbagai game logika yang menyenangkan untuk mengasah kemampuan berpikir logis.</p>
+                    <a href="games.html" class="feature-link">
+                        Mainkan Game <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3 class="feature-title">Ujian & Evaluasi</h3>
+                    <p class="feature-description">Uji pemahaman Anda dengan soal-soal bertingkat kesulitan dan dapatkan sertifikat virtual setelah menyelesaikan ujian.</p>
+                    <a href="exam.html" class="feature-link">
+                        Ikuti Ujian <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">Progress Tracking</h3>
+                    <p class="feature-description">Pantau perkembangan belajar Anda dengan dashboard statistik dan rekomendasi pembelajaran yang dipersonalisasi.</p>
+                    <a href="exam.html" class="feature-link">
+                        Lihat Progress <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="feature-title">Komunitas Pembelajar</h3>
+                    <p class="feature-description">Bergabung dengan komunitas untuk berdiskusi, bertanya, dan berbagi pengetahuan dengan sesama pembelajar logika.</p>
+                    <a href="about.html" class="feature-link">
+                        Gabung Komunitas <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Pembelajaran Section -->
+    <section class="container">
+        <div class="video-section">
+            <h2 class="section-title">🎬 Video Pembelajaran</h2>
+            <p class="section-subtitle">Pelajari konsep logika proposisi melalui video penjelasan yang jelas dan interaktif</p>
+            
+            <div class="video-container">
+                <div class="video-card">
+                    <div class="video-header">
+                        <h3>
+                            <i class="fas fa-play-circle"></i>
+                            Pengenalan Logika Proposisi
+                            <span class="video-duration">⏱ 10:24</span>
+                        </h3>
+                    </div>
+                    
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/JzYBRxhhTH8" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                            title="Video Pembelajaran Logika Proposisi">
+                        </iframe>
+                    </div>
+                    
+                    <div class="video-content">
+                        <div class="video-content-grid">
+                            <div class="content-column">
+                                <h4><i class="fas fa-list-check"></i> Materi yang dibahas:</h4>
+                                <ul>
+                                    <li>Definisi Proposisi</li>
+                                    <li>Operator Logika (AND, OR, NOT)</li>
+                                    <li>Tabel Kebenaran</li>
+                                    <li>Implikasi dan Biimplikasi</li>
+                                </ul>
+                            </div>
+                            <div class="content-column">
+                                <h4><i class="fas fa-lightbulb"></i> Tips Belajar:</h4>
+                                <ul>
+                                    <li>Siapkan catatan</li>
+                                    <li>Pause video untuk mencoba soal</li>
+                                    <li>Tonton berulang jika perlu</li>
+                                    <li>Praktik dengan kalkulator</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="video-actions">
+                            <button class="btn btn-primary" id="playVideoBtn">
+                                <i class="fas fa-play"></i> Putar Video
+                            </button>
+                            <button class="btn btn-secondary" id="openYoutubeBtn">
+                                <i class="fab fa-youtube"></i> Tonton di YouTube
+                            </button>
+                            <button id="shareVideoBtn">
+                                <i class="fas fa-share"></i> Bagikan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 30px; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                    <h4 style="color: #2c3e50; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-star" style="color: #FF801A;"></i>
+                        Manfaat Menonton Video Ini
+                    </h4>
+                    <p style="color: #6e6d7a; line-height: 1.6; font-size: 15px;">
+                        Video pembelajaran ini dirancang khusus untuk membantu Anda memahami konsep dasar logika proposisi dengan pendekatan visual yang mudah dipahami. 
+                        Cocok untuk pemula maupun yang ingin menyegarkan kembali pengetahuan tentang logika matematika.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Institutions Section -->
+    <section class="container">
+        <div class="institutions-section">
+            <h3 class="institutions-title">Metode Pembelajaran yang Diakui</h3>
+            <div class="institutions-grid">
+                <div class="institution-logo">Universitas</div>
+                <div class="institution-logo">Sekolah</div>
+                <div class="institution-logo">Bootcamp</div>
+                <div class="institution-logo">Kursus Online</div>
+                <div class="institution-logo">Tutorial</div>
+                <div class="institution-logo">Workshop</div>
+                <div class="institution-logo">E-Learning</div>
+                <div class="institution-logo">Lab Komputer</div>
+                <div class="institution-logo">Matematika</div>
+                <div class="institution-logo">Ilmu Komputer</div>
+                <div class="institution-logo">Teknik</div>
+                <div class="institution-logo">Industri</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="container">
+        <div class="benefits-section">
+            <h2 class="section-title">Kenapa Belajar Logika Proposisi?</h2>
+            <p class="section-subtitle">Logika proposisi adalah fondasi penting untuk berbagai bidang ilmu dan teknologi</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="benefit-title">Dasar Pemrograman</h3>
+                    <p class="benefit-description">Logika proposisi adalah pondasi utama dalam algoritma, struktur kendali, dan pengembangan perangkat lunak.</p>
+                    <ul class="benefit-list">
+                        <li>Kondisi IF-ELSE</li>
+                        <li>Operator Boolean</li>
+                        <li>Struktur Decision</li>
+                    </ul>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3 class="benefit-title">Rangkaian Digital</h3>
+                    <p class="benefit-description">Digunakan dalam desain gerbang logika, sirkuit elektronika, dan arsitektur komputer.</p>
+                    <ul class="benefit-list">
+                        <li>Gerbang AND/OR/NOT</li>
+                        <li>Arsitektur CPU</li>
+                        <li>Sirkuit Kombinasi</li>
+                    </ul>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="benefit-title">Berpikir Kritis</h3>
+                    <p class="benefit-description">Meningkatkan kemampuan analisis, penalaran deduktif, dan pemecahan masalah secara sistematis.</p>
+                    <ul class="benefit-list">
+                        <li>Analisis Masalah</li>
+                        <li>Penalaran Logis</li>
+                        <li>Pengambilan Keputusan</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="applications-showcase">
+                <h3 class="applications-title">Aplikasi dalam Kehidupan Nyata</h3>
+                <div class="applications-grid">
+                    <div class="application-item">
+                        <div class="app-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h4>Sistem Pakar</h4>
+                        <p>Diagnosis medis, sistem rekomendasi</p>
+                    </div>
+                    <div class="application-item">
+                        <div class="app-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Keamanan</h4>
+                        <p>Enkripsi, autentikasi, firewall</p>
+                    </div>
+                    <div class="application-item">
+                        <div class="app-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h4>Kecerdasan Buatan</h4>
+                        <p>Rule-based systems, inference engine</p>
+                    </div>
+                    <div class="application-item">
+                        <div class="app-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h4>Database</h4>
+                        <p>Query optimization, transaction logic</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Path Section -->
+    <section class="container">
+        <div class="learning-path">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 50px;">Jalur Pembelajaran Terstruktur</h2>
+            <div class="path-container">
+                <div class="path-visual">
+                    <div class="path-diagram">
+                        <div class="path-step">
+                            <div class="step-number">1</div>
+                            <div class="step-text">Pelajari Dasar Logika Proposisi</div>
+                        </div>
+                        <div class="path-step">
+                            <div class="step-number">2</div>
+                            <div class="step-text">Pahami Operator & Tabel Kebenaran</div>
+                        </div>
+                        <div class="path-step">
+                            <div class="step-number">3</div>
+                            <div class="step-text">Latihan dengan Kalkulator Interaktif</div>
+                        </div>
+                        <div class="path-step">
+                            <div class="step-number">4</div>
+                            <div class="step-text">Uji Kemampuan dengan Game</div>
+                        </div>
+                        <div class="path-step">
+                            <div class="step-number">5</div>
+                            <div class="step-text">Evaluasi dengan Ujian Akhir</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="path-content">
+                    <h2>Mulai dari Dasar, Kuasai Secara Bertahap</h2>
+                    <p>Platform kami dirancang dengan kurikulum terstruktur yang memandu Anda dari konsep paling dasar hingga aplikasi praktis logika proposisi.</p>
+                    <p>Setiap langkah dilengkapi dengan materi, latihan, dan evaluasi untuk memastikan pemahaman yang komprehensif sebelum melanjutkan ke topik berikutnya.</p>
+                    <a href="materi.html" class="btn btn-primary" id="startPathBtn" style="margin-top: 20px; width: auto; display: inline-flex;">
+                        <i class="fas fa-road"></i> Mulai Jalur Pembelajaran
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+
+    <!-- CTA Section -->
+    <section class="container">
+        <div class="cta-section">
+            <h2 class="cta-title">Siap Menguasai Logika Proposisi?</h2>
+            <p class="cta-subtitle">Bergabunglah dengan ribuan pembelajar lainnya dan mulai perjalanan Anda menuju penguasaan logika yang lebih baik</p>
+            <a href="materi.html" class="cta-button" id="finalCtaBtn">
+                <i class="fas fa-rocket"></i> Segera Mulai Langkah Anda
+            </a>
+            <p style="margin-top: 20px; opacity: 0.8; font-size: 14px; position: relative; z-index: 1;">
+                Gratis sepenuhnya • Akses ke semua materi
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-brain"></i>
+                    <span>Logika Proposisi</span>
+                </div>
+                <div class="footer-links">
+                    <a href="home.html" class="footer-link">Home</a>
+                    <a href="materi.html" class="footer-link">Materi</a>
+                    <a href="aply.html" class="footer-link">Kalkulator</a>
+                    <a href="exam.html" class="footer-link">Exam</a>
+                    <a href="games.html" class="footer-link">Games</a>
+                    <a href="about.html" class="footer-link">About</a>
+                </div>
+                <div class="team-footer">
+                    <strong>Kelompok 1:</strong> Hawari, Abimanyu, Rifka
+                </div>
+                <p class="copyright">
+                    &copy; 2024 Logika Proposisi - Hak cipta dilindungi undang-undang
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const navMenu = document.getElementById('navMenu');
+            
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                    const icon = menuToggle.querySelector('i');
+                    if (navMenu.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                        menuToggle.setAttribute('aria-expanded', 'true');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!navMenu.contains(event.target) && !menuToggle.contains(event.target) && navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        const icon = menuToggle.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
+                
+                // Close menu when clicking a link
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navMenu.classList.remove('active');
+                        const icon = menuToggle.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                    });
+                });
+            }
+            
+            // Explore Features Button
+            const exploreBtn = document.getElementById('exploreFeaturesBtn');
+            if (exploreBtn) {
+                exploreBtn.addEventListener('click', function() {
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Menjelajahi...';
+                    setTimeout(() => {
+                        document.querySelector('.features-section').scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        this.innerHTML = '<i class="fas fa-compass"></i> Jelajahi Fitur';
+                    }, 300);
+                });
+            }
+            
+            // Video Section Interactions
+            const videoIframe = document.querySelector('.video-wrapper iframe');
+            const playVideoBtn = document.getElementById('playVideoBtn');
+            const openYoutubeBtn = document.getElementById('openYoutubeBtn');
+            const shareVideoBtn = document.getElementById('shareVideoBtn');
+            
+            if (playVideoBtn) {
+                playVideoBtn.addEventListener('click', function() {
+                    // Scroll to video
+                    document.querySelector('.video-section').scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                    
+                    // Add autoplay to video
+                    const currentSrc = videoIframe.src;
+                    if (!currentSrc.includes('autoplay=1')) {
+                        videoIframe.src = currentSrc.includes('?') 
+                            ? currentSrc + '&autoplay=1' 
+                            : currentSrc + '?autoplay=1';
+                    }
+                    
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memutar...';
+                    setTimeout(() => {
+                        this.innerHTML = '<i class="fas fa-play"></i> Putar Video';
+                    }, 1000);
+                });
+            }
+            
+            if (openYoutubeBtn) {
+                openYoutubeBtn.addEventListener('click', function() {
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Membuka...';
+                    setTimeout(() => {
+                        window.open('https://www.youtube.com/watch?v=JzYBRxhhTH8', '_blank');
+                        this.innerHTML = '<i class="fab fa-youtube"></i> Tonton di YouTube';
+                    }, 500);
+                });
+            }
+            
+            if (shareVideoBtn) {
+                shareVideoBtn.addEventListener('click', function() {
+                    if (navigator.share) {
+                        navigator.share({
+                            title: 'Video Pembelajaran Logika Proposisi',
+                            text: 'Pelajari logika proposisi dengan mudah melalui video ini!',
+                            url: 'https://www.youtube.com/watch?v=JzYBRxhhTH8'
+                        });
+                    } else {
+                        // Fallback for browsers that don't support Web Share API
+                        const shareUrl = `https://www.youtube.com/watch?v=JzYBRxhhTH8`;
+                        navigator.clipboard.writeText(shareUrl).then(() => {
+                            alert('Link video telah disalin ke clipboard!');
+                        });
+                    }
+                });
+            }
+            
+            // Start Learning Path Button
+            const startPathBtn = document.getElementById('startPathBtn');
+            if (startPathBtn) {
+                startPathBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengarahkan...';
+                    setTimeout(() => {
+                        window.location.href = 'materi.html';
+                    }, 500);
+                });
+            }
+            
+            // Final CTA Button
+            const finalCtaBtn = document.getElementById('finalCtaBtn');
+            if (finalCtaBtn) {
+                finalCtaBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memulai...';
+                    setTimeout(() => {
+                        window.location.href = 'materi.html';
+                    }, 500);
+                });
+            }
+            
+            // Animate elements on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe feature cards
+            document.querySelectorAll('.feature-card, .benefit-card, .application-item').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+            
+            // Set active nav link based on current page
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute('href');
+                if (linkPage === currentPage || (currentPage === '' && linkPage === 'home.html')) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+            
+            // Add loading animation for buttons
+            document.querySelectorAll('.btn, .feature-link, .cta-button').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    if (this.getAttribute('href') === '#' || this.tagName === 'BUTTON') {
+                        const originalText = this.innerHTML;
+                        this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
+                        setTimeout(() => {
+                            this.innerHTML = originalText;
+                        }, 1000);
+                    }
+                });
+            });
+            
+            // Keyboard navigation for accessibility
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && navMenu && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+        
+        // Handle window resize
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            const navMenu = document.getElementById('navMenu');
+            const menuToggle = document.getElementById('menuToggle');
+            
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                if (window.innerWidth > 768 && navMenu) {
+                    navMenu.classList.remove('active');
+                    const icon = menuToggle.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                    if (menuToggle) {
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                    }
+                }
+            }, 250);
+        });
+    </script>
+</body>
+</html>

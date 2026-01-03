@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Logika Proposisi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        
+        .navbar {
+            background-color: #fff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #FF801A;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 32px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-left: 30px;
+            position: relative;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: #FF801A;
+        }
+
+        .nav-link.active {
+            color: #FF801A;
+            font-weight: 600;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #FF801A;
+            border-radius: 2px;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            /* padding: 20px; */
+        }
+
+        .calculator-container {
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 95%;
+            max-width: 1200px;
+            padding: 30px;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .description {
+            font-size: 16px;
+            color: #7f8c8d;
+            line-height: 1.5;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+        
+        @media (max-width: 900px) {
+            .calculator-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .input-section, .output-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-section {
+            min-height: 380px;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-title i {
+            color: #3498db;
+            font-size: 24px;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 16px;
+        }
+        
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.2s;
+            background: white;
+        }
+        
+        select:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        .operator-desc {
+            display: block;
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-top: 8px;
+            padding: 8px 12px;
+            background: white;
+            border-radius: 6px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .operands {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 480px) {
+            .operands {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .operand {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .boolean-select {
+            display: flex;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid #ddd;
+            margin-top: 5px;
+        }
+        
+        .boolean-option {
+            flex: 1;
+            text-align: center;
+            padding: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .boolean-option.true-option {
+            color: #27ae60;
+        }
+        
+        .boolean-option.false-option {
+            color: #e74c3c;
+        }
+        
+        .boolean-option.selected {
+            background: linear-gradient(135deg, #FF801A 0%, #FF9E53 100%);
+            color: white;
+        }
+        
+        .boolean-option:not(.selected):hover {
+            background-color: #e8f4fc;
+        }
+        
+        .calculate-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #FF801A 0%, #FF9E53 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 10px;
+            box-shadow: 0 4px 10px rgba(255, 128, 26, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 128, 26, 0.5);
+        }
+        
+        .calculate-btn:active {
+            transform: translateY(0);
+        }
+        
+        .result {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+            min-height: 150px;
+        }
+        
+        .result-expression {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .result-value {
+            font-size: 28px;
+            font-weight: 800;
+            padding: 10px 25px;
+            border-radius: 8px;
+            background: #f8f9fa;
+        }
+        
+        .result-true {
+            color: #27ae60;
+            box-shadow: 0 0 10px rgba(39, 174, 96, 0.3);
+        }
+        
+        .result-false {
+            color: #e74c3c;
+            box-shadow: 0 0 10px rgba(231, 76, 60, 0.3);
+        }
+        
+        .operation-info {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #2c3e50;
+            line-height: 1.6;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+        }
+        
+        .info-title {
+            font-weight: 700;
+            color: #3498db;
+            margin-bottom: 10px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .truth-table-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin-top: 10px;
+        }
+        
+        .truth-table-container {
+            overflow-x: auto;
+            margin-top: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            font-size: 14px;
+            min-width: 600px;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+            border: 1px solid #e1e5eb;
+        }
+        
+        th {
+            background: #FF801A;
+            color: white;
+            font-weight: 700;
+            font-size: 15px;
+            position: sticky;
+            top: 0;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        tr:hover {
+            background-color: #e8f4fc;
+        }
+        
+        .highlight {
+            background-color: #fffacd !important;
+            font-weight: bold;
+        }
+
+        footer {
+            padding: 40px 0;
+            background-color: #2c3e50;
+            color: white;
+            border-top-left-radius: 40px;
+            border-top-right-radius: 40px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #FF801A;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-logo i {
+            margin-right: 10px;
+            font-size: 32px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-link:hover {
+            color: #FF801A;
+        }
+
+        .team-footer {
+            margin: 15px 0;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+            width: 100%;
+            text-align: center;
+        }
+
+        .team-footer strong {
+            color: #FF801A;
+        }
+
+        .copyright {
+            margin-top: 30px;
+            width: 100%;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .nav-container, .container {
+                padding: 0 30px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 48px;
+            }
+            
+            .companies-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 40px 20px;
+            }
+            
+            .stats-title {
+                font-size: 40px;
+            }
+            
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-item {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 36px;
+            }
+            
+            .stats-title {
+                font-size: 32px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .footer-links {
+                justify-content: center;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .companies-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 28px;
+            }
+            
+            .hero-subtitle {
+                font-size: 18px;
+            }
+            
+            .companies-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-container {
+                justify-content: center;
+            }
+            
+            .logo {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+        <nav class="navbar">
+        <div class="nav-container">
+            <a href="home.html" class="logo">
+                <i class="fas fa-brain logo-icon"></i>
+                Logika Proposisi
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="home.html" class="nav-link active">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a href="materi.html" class="nav-link">MATH</a>
+                </li>
+                <li class="nav-item">
+                    <a href="aply.html" class="nav-link">APLY</a>
+                </li>
+                <li class="nav-item">
+                    <a href="exam.html" class="nav-link">EXAM</a>
+                </li>
+                <li class="nav-item">
+                    <a href="games.html" class="nav-link">GAMES</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+    <!-- Kalkulator Container -->
+    <div class="calculator-container">
+        <header>
+            <h1><i class="fas fa-calculator"></i> Kalkulator Proposisi Majemuk</h1>
+            <p class="description">
+                Alat untuk menghitung nilai kebenaran dari operasi logika proposisional. Pilih operasi dan nilai variabel, lalu klik hitung.
+            </p>
+        </header>
+        
+        <div class="calculator-grid">
+            <div class="input-section">
+                <div class="section-title">
+                    <i class="fas fa-sliders-h"></i>
+                    <span>Input Nilai</span>
+                </div>
+                
+                <div class="input-group">
+                    <label for="operation">Operasi Logika:</label>
+                    <select id="operation">
+                        <option value="negation">Negasi (¬p)</option>
+                        <option value="conjunction">Konjungsi (p ∧ q)</option>
+                        <option value="disjunction">Disjungsi (p ∨ q)</option>
+                        <option value="exclusiveOr">Exclusive OR (p ⊕ q)</option>
+                        <option value="implication">Implikasi (p → q)</option>
+                        <option value="biconditional">Biimplikasi (p ↔ q)</option>
+                    </select>
+                    <span class="operator-desc" id="operator-desc">Membalik nilai kebenaran</span>
+                </div>
+                
+                <div class="operands">
+                    <div class="operand">
+                        <label>Nilai p:</label>
+                        <div class="boolean-select">
+                            <div class="boolean-option true-option selected" data-value="true">True</div>
+                            <div class="boolean-option false-option" data-value="false">False</div>
+                        </div>
+                    </div>
+                    
+                    <div class="operand" id="q-operand">
+                        <label>Nilai q:</label>
+                        <div class="boolean-select">
+                            <div class="boolean-option true-option selected" data-value="true">True</div>
+                            <div class="boolean-option false-option" data-value="false">False</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="calculate" class="calculate-btn">
+                    <i class="fas fa-calculator"></i> Hitung
+                </button>
+            </div>
+            
+            <div class="output-section">
+                <div class="section-title">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Hasil Perhitungan</span>
+                </div>
+                
+                <div class="result">
+                    <div class="result-expression" id="result-expression">p ∧ q</div>
+                    <div class="result-value result-true" id="result-value">True</div>
+                </div>
+                
+                <div class="operation-info">
+                    <div class="info-title">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Penjelasan Operasi:</span>
+                    </div>
+                    <div id="operation-info">
+                        Konjungsi (p ∧ q) benar hanya jika kedua proposisi benar.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="truth-table-section">
+            <div class="section-title">
+                <i class="fas fa-table"></i>
+                <span>Tabel Kebenaran</span>
+            </div>
+            
+            <div class="truth-table-container">
+                <table id="truth-table">
+                    <thead>
+                        <tr>
+                            <th>p</th>
+                            <th>q</th>
+                            <th>¬p</th>
+                            <th>p ∧ q</th>
+                            <th>p ∨ q</th>
+                            <th>p ⊕ q</th>
+                            <th>p → q</th>
+                            <th>p ↔ q</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+        <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-brain"></i>
+                    <span>Logika Proposisi</span>
+                </div>
+                <div class="footer-links">
+                    <a href="home.html" class="footer-link">Home</a>
+                    <a href="materi.html" class="footer-link">Materi</a>
+                    <a href="kalkulator.html" class="footer-link">Kalkulator</a>
+                    <a href="exam.html" class="footer-link">Exam</a>
+                    <a href="games.html" class="footer-link">Games</a>
+                    <a href="about.html" class="footer-link">About</a>
+                </div>
+                <div class="team-footer">
+                    <strong>Kelompok 1:</strong> Hawari, Abimanyu, Rifka
+                </div>
+                <p class="copyright">
+                    &copy; 2024 Logika Proposisi - All rights reserved
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+        <script>
+        // Menambahkan interaksi pada tombol
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.btn-primary, .btn-secondary');
+            
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Efek klik sederhana
+                    this.style.transform = 'scale(0.98)';
+                    
+                    // Reset setelah 150ms
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                    
+                    // Aksi berdasarkan tombol
+                    if (this.classList.contains('btn-primary')) {
+                        // Untuk tombol "Get started"
+                        if (this.textContent === 'Get started') {
+                            alert('Welcome to Dribbble! Let\'s help you find the best creative talent.');
+                        }
+                    } else {
+                        // Untuk tombol "Book a call"
+                        alert('We will contact you soon to schedule a call!');
+                    }
+                });
+            });
+            
+            // Efek hover untuk logo perusahaan
+            const companyLogos = document.querySelectorAll('.company-logo');
+            companyLogos.forEach(logo => {
+                logo.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.transition = 'transform 0.2s ease';
+                });
+                
+                logo.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Aktifkan link navbar yang sesuai
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute('href');
+                if (linkPage === currentPage || (currentPage === '' && linkPage === 'home.html')) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

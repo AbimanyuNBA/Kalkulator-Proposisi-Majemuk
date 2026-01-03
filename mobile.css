@@ -1,0 +1,169 @@
+/* Tambahkan di akhir materi-style.css */
+
+@media (max-width: 1024px) {
+    .materi-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .sidebar {
+        width: 100%;
+        position: static;
+        margin-bottom: 20px;
+        max-height: none;
+    }
+    
+    .materi-content {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .materi-content {
+        padding: 20px;
+    }
+    
+    .materi-content h2 {
+        font-size: 24px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .materi-card h3 {
+        font-size: 20px;
+    }
+    
+    .materi-card h4 {
+        font-size: 16px;
+    }
+    
+    .contoh-grid, .operator-grid, .kategori-grid, .aplikasi-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .kebenaran-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .table-container {
+        margin: 10px -20px;
+        border-radius: 0;
+    }
+    
+    .truth-table th, 
+    .truth-table td {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    .sidebar {
+        padding: 15px;
+    }
+    
+    .materi-link {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+    
+    .sidebar-header h3 {
+        font-size: 18px;
+    }
+    
+    .aplikasi-item pre,
+    .aplikasi-box .code {
+        font-size: 12px;
+        padding: 10px;
+    }
+    
+    .study-case {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .materi-container {
+        margin: 15px auto;
+        padding: 0 10px;
+    }
+    
+    .materi-content {
+        padding: 15px;
+        border-radius: 10px;
+    }
+    
+    .materi-content h2 {
+        font-size: 20px;
+    }
+    
+    .materi-card h3 {
+        font-size: 18px;
+    }
+    
+    .definisi-box, .contoh-box, .kebenaran-box, .aplikasi-box {
+        padding: 15px;
+    }
+    
+    .operator-card {
+        padding: 20px 15px;
+    }
+    
+    .operator-icon {
+        font-size: 32px;
+    }
+    
+    .kategori-card {
+        padding: 20px;
+    }
+    
+    .kategori-header h4 {
+        font-size: 20px;
+    }
+    
+    .aplikasi-item {
+        padding: 20px;
+    }
+    
+    .aplikasi-icon {
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+}
+
+/* Touch optimization for interactive elements */
+@media (hover: none) and (pointer: coarse) {
+    .materi-link, .operator-card, .option {
+        min-height: 44px;
+        padding: 12px;
+    }
+    
+    .materi-link {
+        gap: 15px;
+    }
+    
+    .materi-link i {
+        font-size: 18px;
+    }
+}
+
+/* Print styles */
+@media print {
+    .navbar, .sidebar, footer {
+        display: none;
+    }
+    
+    .materi-container {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .materi-content {
+        box-shadow: none;
+        padding: 0;
+    }
+    
+    .materi-section {
+        break-inside: avoid;
+    }
+}

@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Logika Proposisi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #fff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #FF801A;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 32px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-left: 30px;
+            position: relative;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: #FF801A;
+        }
+
+        .nav-link.active {
+            color: #FF801A;
+            font-weight: 600;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #FF801A;
+            border-radius: 2px;
+        }
+
+        /* Welcome Modal */
+        .welcome-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-icon {
+            font-size: 60px;
+            color: #FF801A;
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .modal-subtitle {
+            color: #6e6d7a;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .question {
+            text-align: left;
+            margin-bottom: 25px;
+        }
+
+        .question-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 16px;
+        }
+
+        .question-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 16px;
+            background: white;
+            transition: border-color 0.2s;
+        }
+
+        .question-select:focus {
+            border-color: #FF801A;
+            outline: none;
+        }
+
+        .start-button {
+            background: linear-gradient(135deg, #FF801A 0%, #FF9E53 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(255, 128, 26, 0.3);
+        }
+
+        .start-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 128, 26, 0.4);
+        }
+
+        /* About Header */
+        .about-header {
+            padding: 80px 0 50px;
+            text-align: center;
+            background: linear-gradient(135deg, #FF801A 0%, #FF9E53 100%);
+            color: white;
+            margin-top: 20px;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.1)" d="M0,0 L100,0 L100,100 Z"/></svg>');
+            background-size: cover;
+        }
+
+        .about-title {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-subtitle {
+            font-size: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            color: #6e6d7a;
+            max-width: 600px;
+            margin: 0 auto 50px;
+            font-size: 18px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .member-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            border: 4px solid #FF801A;
+        }
+
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .member-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .member-role {
+            color: #FF801A;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .member-description {
+            color: #6e6d7a;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .member-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: #f8f9fa;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: #6e6d7a;
+        }
+
+        /* Mission Section */
+        .mission-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+            border-radius: 20px;
+            margin-bottom: 60px;
+        }
+
+        .mission-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .mission-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .mission-text h2 {
+            font-size: 36px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .mission-text p {
+            color: #6e6d7a;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .mission-visual {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .mission-icon {
+            font-size: 80px;
+            color: #FF801A;
+            margin-bottom: 20px;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 80px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #FF801A 0%, #FF9E53 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 36px;
+        }
+
+        .feature-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .feature-description {
+            color: #6e6d7a;
+            line-height: 1.6;
+        }
+
+        /* Personalized Welcome */
+        .personalized-welcome {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            text-align: center;
+            display: none;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .welcome-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .welcome-title {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .welcome-text {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 60px 0;
+            background: #f8f9fa;
+            border-radius: 20px;
+            margin: 60px 0;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.2s;
+        }
+
+        .form-input:focus {
+            border-color: #FF801A;
+            outline: none;
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            background: linear-gradient(135deg, #FF801A 0%, #FF9E53 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 128, 26, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            background-color: #2c3e50;
+            color: white;
+            border-top-left-radius: 40px;
+            border-top-right-radius: 40px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #FF801A;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-logo i {
+            margin-right: 10px;
+            font-size: 32px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-link:hover {
+            color: #FF801A;
+        }
+
+        .team-footer {
+            margin: 15px 0;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+            width: 100%;
+            text-align: center;
+        }
+
+        .team-footer strong {
+            color: #FF801A;
+        }
+
+        .copyright {
+            margin-top: 30px;
+            width: 100%;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+/* Tambahkan di akhir style dalam about.html */
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 20px;
+    }
+    
+    .modal-title {
+        font-size: 24px;
+    }
+    
+    .team-grid, .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .mission-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-title {
+        font-size: 32px;
+    }
+    
+    .member-photo {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .member-name {
+        font-size: 20px;
+    }
+    
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+    }
+    
+    .contact-form {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 576px) {
+    .about-title {
+        font-size: 28px;
+    }
+    
+    .section-title {
+        text-align: center;
+        font-size: 24px;
+    }
+    
+    .personalized-welcome {
+        padding: 20px;
+        margin: 20px 0;
+    }
+    
+    .question-select {
+        font-size: 14px;
+    }
+        }
+    </style>
+</head>
+<body>
+    <!-- Welcome Modal -->
+    <div class="welcome-modal" id="welcomeModal">
+        <div class="modal-content">
+            <div class="modal-icon">
+                <i class="fas fa-hand-wave"></i>
+            </div>
+            <h2 class="modal-title">Selamat Datang!</h2>
+            <p class="modal-subtitle">Sebelum menjelajahi halaman About Us, izinkan kami mengenal Anda lebih baik</p>
+            
+            <div class="question">
+                <label class="question-label">Apa tingkat pengetahuan Anda tentang logika proposisi?</label>
+                <select class="question-select" id="knowledgeLevel">
+                    <option value="beginner">Pemula - Baru mempelajari</option>
+                    <option value="intermediate">Menengah - Sudah memahami dasar</option>
+                    <option value="advanced">Lanjutan - Sudah menguasai dengan baik</option>
+                    <option value="expert">Ahli - Sudah menerapkan dalam proyek nyata</option>
+                </select>
+            </div>
+            
+            <div class="question">
+                <label class="question-label">Apa tujuan Anda mengunjungi website ini?</label>
+                <select class="question-select" id="visitPurpose">
+                    <option value="learning">Belajar logika proposisi</option>
+                    <option value="practice">Berlatih dengan soal dan game</option>
+                    <option value="project">Mendukung proyek akademik</option>
+                    <option value="curiosity">Hanya ingin tahu</option>
+                </select>
+            </div>
+            
+            <div class="question">
+                <label class="question-label">Bidang apa yang paling Anda minati?</label>
+                <select class="question-select" id="interestField">
+                    <option value="mathematics">Matematika Murni</option>
+                    <option value="computer">Ilmu Komputer & Pemrograman</option>
+                    <option value="engineering">Teknik & Elektronika</option>
+                    <option value="education">Pendidikan & Pengajaran</option>
+                </select>
+            </div>
+            
+            <button class="start-button" id="startButton">
+                <i class="fas fa-rocket"></i> Mulai Eksplorasi
+            </button>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="home.html" class="logo">
+                <i class="fas fa-brain logo-icon"></i>
+                Logika Proposisi
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="home.html" class="nav-link">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a href="materi.html" class="nav-link">MATH</a>
+                </li>
+                <li class="nav-item">
+                    <a href="aply.html" class="nav-link">APLY</a>
+                </li>
+                <li class="nav-item">
+                    <a href="exam.html" class="nav-link">EXAM</a>
+                </li>
+                <li class="nav-item">
+                    <a href="games.html" class="nav-link">GAMES</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link active">About Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Personalized Welcome Message -->
+    <div class="container">
+        <div class="personalized-welcome" id="personalizedWelcome">
+            <div class="welcome-icon">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            <h2 class="welcome-title" id="welcomeTitle">Selamat Datang!</h2>
+            <p class="welcome-text" id="welcomeText">Kami senang Anda berada di sini. Berdasarkan informasi yang Anda berikan, kami telah menyesuaikan konten untuk pengalaman terbaik.</p>
+        </div>
+    </div>
+
+    <!-- About Header -->
+    <section class="container">
+        <div class="about-header">
+            <h1 class="about-title">Tentang Kami</h1>
+            <p class="about-subtitle">Mengubah cara belajar logika proposisi melalui teknologi yang interaktif dan menyenangkan</p>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="container">
+        <div class="team-section">
+            <h2 class="section-title">Tim Pengembang</h2>
+            <p class="section-subtitle">Kami adalah kelompok mahasiswa yang berdedikasi untuk membuat pembelajaran logika proposisi lebih mudah dan menyenangkan</p>
+            
+            <div class="team-grid">
+                <!-- Member 1 -->
+                <div class="team-card">
+                    <div class="member-photo">
+                        <img src="img/hawari.jpg" alt="Hawari">
+                    </div>
+                    <h3 class="member-name">Hawari</h3>
+                    <div class="member-role">Lead Developer</div>
+                    <p class="member-description">Bertanggung jawab atas pengembangan sistem logika dan algoritma utama platform. Memiliki ketertarikan mendalam pada matematika diskrit dan pengembangan software.</p>
+                    <div class="member-skills">
+                        <span class="skill-tag">Algoritma</span>
+                        <span class="skill-tag">Logika Matematika</span>
+                    </div>
+                </div>
+                
+                <!-- Member 2 -->
+                <div class="team-card">
+                    <div class="member-photo">
+                        <img src="img/Abimanyu.jpg" alt="Abimanyu">
+                    </div>
+                    <h3 class="member-name">Abimanyu</h3>
+                    <div class="member-role">UI/UX Designer</div>
+                    <p class="member-description">Mendesain pengalaman pengguna yang intuitif dan membuat konten pembelajaran yang mudah dipahami. Fokus pada estetika dan fungsionalitas.</p>
+                    <div class="member-skills">
+                        <span class="skill-tag">UI/UX Design</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                    </div>
+                </div>
+                
+                <!-- Member 3 -->
+                <div class="team-card">
+                    <div class="member-photo">
+                        <img src="img/rifka.jpeg" alt="Rifka">
+                    </div>
+                    <h3 class="member-name">Rifka</h3>
+                    <div class="member-role">Educational & Tester</div>
+                    <p class="member-description">Mengembangkan kurikulum pembelajaran dan melakukan pengujian untuk memastikan materi mudah dipahami oleh berbagai tingkat pengguna.</p>
+                    <div class="member-skills">
+                        <span class="skill-tag">Mentor</span>
+                        <span class="skill-tag"></span>
+                        <span class="skill-tag">Komunikasi</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="container">
+        <div class="mission-section">
+            <div class="mission-content">
+                <div class="mission-text">
+                    <h2>Misi Kami</h2>
+                    <p>Kami percaya bahwa logika proposisi tidak harus menjadi subjek yang menakutkan atau membosankan. Dengan pendekatan yang tepat, setiap orang dapat memahami dan menguasai konsep-konsep logika dasar yang sangat penting dalam berbagai bidang.</p>
+                    <p>Platform ini kami kembangkan sebagai bagian dari proyek akademik untuk menunjukkan bagaimana teknologi dapat membuat pembelajaran matematika diskrit menjadi lebih interaktif, menyenangkan, dan efektif.</p>
+                    <p>Kami berkomitmen untuk terus mengembangkan platform ini dengan fitur-fitur baru berdasarkan masukan dari pengguna seperti Anda.</p>
+                </div>
+                <div class="mission-visual">
+                    <div class="mission-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Visi & Misi</h3>
+                    <p>Menjadi platform pembelajaran logika proposisi terdepan yang menginspirasi generasi baru untuk mencintai matematika dan logika melalui pendekatan yang modern dan interaktif.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="container">
+        <div class="features-section">
+            <h2 class="section-title">Apa yang Kami Tawarkan</h2>
+            <p class="section-subtitle">Platform pembelajaran logika proposisi terlengkap dengan berbagai fitur interaktif</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3 class="feature-title">Materi Lengkap</h3>
+                    <p class="feature-description">Pembahasan komprehensif tentang logika proposisi mulai dari dasar hingga aplikasi lanjutan dengan contoh-contoh nyata.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3 class="feature-title">Kalkulator Logika</h3>
+                    <p class="feature-description">Alat interaktif untuk menghitung nilai kebenaran dari berbagai operasi logika dengan tabel kebenaran otomatis.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3 class="feature-title">Game Edukatif</h3>
+                    <p class="feature-description">Belajar sambil bermain dengan berbagai permainan yang dirancang untuk memperkuat pemahaman konsep logika.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3 class="feature-title">Ujian Interaktif</h3>
+                    <p class="feature-description">Tes pengetahuan Anda dengan soal-soal bertingkat kesulitan dan dapatkan feedback langsung.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">Progress Tracking</h3>
+                    <p class="feature-description">Pantau perkembangan belajar Anda dengan statistik dan rekomendasi pembelajaran personal.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="feature-title">Komunitas Belajar</h3>
+                    <p class="feature-description">Bergabung dengan komunitas pembelajar lain untuk berdiskusi dan saling membantu.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <!-- <section class="container">
+        <div class="contact-section">
+            <h2 class="section-title">Hubungi Kami</h2>
+            <p class="section-subtitle">Punya pertanyaan, saran, atau masukan? Kami senang mendengar dari Anda!</p>
+            
+            <div class="contact-form">
+                <div class="form-group">
+                    <label class="form-label" for="name">Nama Lengkap</label>
+                    <input type="text" id="name" class="form-input" placeholder="Masukkan nama Anda">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="email">Email</label>
+                    <input type="email" id="email" class="form-input" placeholder="email@contoh.com">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="subject">Subjek</label>
+                    <input type="text" id="subject" class="form-input" placeholder="Apa yang ingin Anda sampaikan?">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="message">Pesan</label>
+                    <textarea id="message" class="form-input form-textarea" placeholder="Tulis pesan Anda di sini..."></textarea>
+                </div>
+                
+                <button class="submit-button" id="submitContact">
+                    <i class="fas fa-paper-plane"></i> Kirim Pesan
+                </button>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-brain"></i>
+                    <span>Logika Proposisi</span>
+                </div>
+                <div class="footer-links">
+                    <a href="home.html" class="footer-link">Home</a>
+                    <a href="materi.html" class="footer-link">Materi</a>
+                    <a href="aply.html" class="footer-link">Kalkulator</a>
+                    <a href="exam.html" class="footer-link">Exam</a>
+                    <a href="games.html" class="footer-link">Games</a>
+                    <a href="about.html" class="footer-link">About</a>
+                </div>
+                <div class="team-footer">
+                    <strong>Kelompok 1:</strong> Hawari, Abimanyu, Rifka
+                </div>
+                <p class="copyright">
+                    &copy; 2024 Logika Proposisi - All rights reserved
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Welcome Modal Logic
+        const welcomeModal = document.getElementById('welcomeModal');
+        const startButton = document.getElementById('startButton');
+        const knowledgeLevel = document.getElementById('knowledgeLevel');
+        const visitPurpose = document.getElementById('visitPurpose');
+        const interestField = document.getElementById('interestField');
+        const personalizedWelcome = document.getElementById('personalizedWelcome');
+        const welcomeTitle = document.getElementById('welcomeTitle');
+        const welcomeText = document.getElementById('welcomeText');
+        const submitContact = document.getElementById('submitContact');
+
+        // Show modal on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user has already completed the welcome
+            const hasCompletedWelcome = localStorage.getItem('aboutWelcomeCompleted');
+            
+            if (!hasCompletedWelcome) {
+                welcomeModal.style.display = 'flex';
+            } else {
+                // If already completed, show personalized welcome
+                showPersonalizedWelcome();
+            }
+        });
+
+        // Start button click handler
+        startButton.addEventListener('click', function() {
+            // Get user responses
+            const level = knowledgeLevel.value;
+            const purpose = visitPurpose.value;
+            const interest = interestField.value;
+            
+            // Save to localStorage
+            localStorage.setItem('aboutWelcomeCompleted', 'true');
+            localStorage.setItem('userKnowledgeLevel', level);
+            localStorage.setItem('userVisitPurpose', purpose);
+            localStorage.setItem('userInterestField', interest);
+            
+            // Hide modal
+            welcomeModal.style.display = 'none';
+            
+            // Show personalized welcome
+            showPersonalizedWelcome();
+            
+            // Optional: Scroll to personalized welcome
+            setTimeout(() => {
+                personalizedWelcome.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 300);
+        });
+
+        // Function to show personalized welcome based on user responses
+        function showPersonalizedWelcome() {
+            const level = localStorage.getItem('userKnowledgeLevel') || 'beginner';
+            const purpose = localStorage.getItem('userVisitPurpose') || 'learning';
+            const interest = localStorage.getItem('userInterestField') || 'mathematics';
+            
+            // Map responses to personalized messages
+            const levelText = {
+                'beginner': 'Pemula',
+                'intermediate': 'Menengah',
+                'advanced': 'Lanjutan',
+                'expert': 'Ahli'
+            };
+            
+            const purposeText = {
+                'learning': 'belajar logika proposisi',
+                'practice': 'berlatih dengan soal dan game',
+                'project': 'mendukung proyek akademik',
+                'curiosity': 'menjelajahi dunia logika'
+            };
+            
+            const interestText = {
+                'mathematics': 'matematika murni',
+                'computer': 'ilmu komputer & pemrograman',
+                'engineering': 'teknik & elektronika',
+                'philosophy': 'filsafat & penalaran',
+                'education': 'pendidikan & pengajaran'
+            };
+            
+            // Create personalized message
+            const title = `Halo, ${levelText[level]}!`;
+            const text = `Kami tahu Anda datang untuk ${purposeText[purpose]} dan tertarik dengan ${interestText[interest]}. Mari jelajahi bersama!`;
+            
+            // Update and show personalized welcome
+            welcomeTitle.textContent = title;
+            welcomeText.textContent = text;
+            personalizedWelcome.style.display = 'block';
+            
+            // Add animation
+            personalizedWelcome.style.animation = 'none';
+            setTimeout(() => {
+                personalizedWelcome.style.animation = 'slideIn 0.5s ease';
+            }, 10);
+        }
+
+        // Contact form submission
+        submitContact.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const subject = document.getElementById('subject').value.trim();
+            const message = document.getElementById('message').value.trim();
+            
+            if (!name || !email || !subject || !message) {
+                alert('Harap lengkapi semua field sebelum mengirim pesan.');
+                return;
+            }
+            
+            // Simple email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Harap masukkan alamat email yang valid.');
+                return;
+            }
+            
+            // Simulate sending message (in a real app, this would be an API call)
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
+            this.disabled = true;
+            
+            setTimeout(() => {
+                alert('Terima kasih! Pesan Anda telah berhasil dikirim. Kami akan membalasnya segera melalui email.');
+                
+                // Reset form
+                document.getElementById('name').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('subject').value = '';
+                document.getElementById('message').value = '';
+                
+                this.innerHTML = '<i class="fas fa-paper-plane"></i> Kirim Pesan';
+                this.disabled = false;
+            }, 1500);
+        });
+
+        // Navbar active link
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute('href');
+                if (linkPage === currentPage || (currentPage === '' && linkPage === 'home.html')) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
