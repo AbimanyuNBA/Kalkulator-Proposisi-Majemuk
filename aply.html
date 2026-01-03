@@ -704,7 +704,7 @@
                     <span>Logika Proposisi</span>
                 </div>
                 <div class="footer-links">
-                    <a href="home.html" class="footer-link">Home</a>
+                    <a href="index.html" class="footer-link">Home</a>
                     <a href="materi.html" class="footer-link">Materi</a>
                     <a href="kalkulator.html" class="footer-link">Kalkulator</a>
                     <a href="exam.html" class="footer-link">Exam</a>
@@ -721,7 +721,7 @@
         </div>
     </footer>
 
-    <script src="index.js"></script>
+    <script src="script.js"></script>
         <script>
         // Menambahkan interaksi pada tombol
         document.addEventListener('DOMContentLoaded', function() {
@@ -769,7 +769,7 @@
             
             navLinks.forEach(link => {
                 const linkPage = link.getAttribute('href');
-                if (linkPage === currentPage || (currentPage === '' && linkPage === 'home.html')) {
+                if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
                     link.classList.add('active');
                 } else {
                     link.classList.remove('active');
