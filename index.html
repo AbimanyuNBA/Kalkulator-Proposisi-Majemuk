@@ -338,31 +338,66 @@
             color: #e67210;
         }
 
-        /* Video Section */
+        /* Video Section - TATA LETAK DIPERBAIKI */
         .video-section {
             padding: 80px 0;
             text-align: center;
-            /* background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); */
             border-radius: 20px;
             margin: 40px 0;
         }
 
         .video-container {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
+        /* Grid untuk video - DIPERBAIKI */
+        .video-grid-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        @media (min-width: 992px) {
+            .video-grid-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+        }
+
+        /* Video card - DIPERBAIKI */
         .video-card {
             background: white;
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
         }
 
         .video-header {
             padding: 25px 30px;
-            background: linear-gradient(135deg, #FF801A 0%, #FF9E53 100%);
             color: white;
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-header.orange {
+            background: linear-gradient(135deg, #FF801A 0%, #FF9E53 100%);
+        }
+
+        .video-header.blue {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
         }
 
         .video-header h3 {
@@ -374,6 +409,8 @@
             gap: 10px;
             justify-content: center;
             flex-wrap: wrap;
+            text-align: center;
+            line-height: 1.4;
         }
 
         .video-duration {
@@ -382,13 +419,15 @@
             border-radius: 20px;
             font-size: 14px;
             font-weight: 600;
+            white-space: nowrap;
         }
 
         .video-wrapper {
             position: relative;
-            padding-bottom: 56.25%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
             height: 0;
             overflow: hidden;
+            background: #000;
         }
 
         .video-wrapper iframe {
@@ -403,13 +442,28 @@
         .video-content {
             padding: 30px;
             background: white;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
+        /* Grid untuk konten video - DIPERBAIKI */
         .video-content-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+
+        @media (min-width: 768px) {
+            .video-content-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .content-column {
+            text-align: left;
         }
 
         .content-column h4 {
@@ -419,6 +473,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            font-weight: 600;
         }
 
         .content-column ul {
@@ -431,6 +486,8 @@
             padding: 8px 0;
             position: relative;
             padding-left: 25px;
+            line-height: 1.5;
+            font-size: 15px;
         }
 
         .content-column li:before {
@@ -439,40 +496,86 @@
             font-size: 20px;
             position: absolute;
             left: 0;
-            top: 5px;
+            top: 8px;
         }
 
+        /* Tombol video - DIPERBAIKI */
         .video-actions {
             display: flex;
             gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 30px;
-            padding-top: 30px;
+            margin-top: auto;
+            padding-top: 25px;
             border-top: 1px solid #eee;
         }
 
         .video-actions .btn {
-            min-width: 180px;
+            min-width: 160px;
+            flex: 1;
         }
 
-        #shareVideoBtn {
+        @media (max-width: 768px) {
+            .video-actions {
+                flex-direction: column;
+            }
+            
+            .video-actions .btn {
+                width: 100%;
+            }
+        }
+
+        .share-video-btn {
             background: #4267B2;
             color: white;
             border: none;
-            padding: 16px 32px;
+            padding: 16px 24px;
             border-radius: 8px;
             font-weight: 600;
             cursor: pointer;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
             transition: all 0.3s ease;
+            flex: 1;
+            min-width: 160px;
         }
 
-        #shareVideoBtn:hover {
+        .share-video-btn:hover {
             background: #365899;
             transform: translateY(-2px);
+        }
+
+        /* Video Description Box - DIPERBAIKI */
+        .video-description {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-top: 30px;
+        }
+
+        .video-description h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .video-description p {
+            color: #6e6d7a;
+            line-height: 1.6;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .video-description .highlight {
+            color: #FF801A;
+            font-weight: 600;
         }
 
         /* Institutions Section */
@@ -760,79 +863,6 @@
             line-height: 1.8;
         }
 
-        /* Testimonial Section */
-        .testimonial-section {
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .testimonial-slider {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .testimonial {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            margin-bottom: 30px;
-            position: relative;
-        }
-
-        .testimonial::before {
-            content: '"';
-            position: absolute;
-            top: 20px;
-            left: 30px;
-            font-size: 80px;
-            color: #FF801A;
-            opacity: 0.1;
-            font-family: serif;
-        }
-
-        .testimonial-text {
-            font-size: 18px;
-            color: #6e6d7a;
-            line-height: 1.8;
-            margin-bottom: 25px;
-            font-style: italic;
-            position: relative;
-            z-index: 1;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #FF801A 0%, #FF9E53 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            flex-shrink: 0;
-        }
-
-        .author-info h4 {
-            color: #2c3e50;
-            margin-bottom: 5px;
-            font-size: 18px;
-        }
-
-        .author-info p {
-            color: #6e6d7a;
-            font-size: 14px;
-        }
-
         /* CTA Section */
         .cta-section {
             padding: 80px 0;
@@ -1108,13 +1138,11 @@
             /* Video Section */
             .video-actions {
                 flex-direction: column;
-                align-items: center;
             }
             
             .video-actions .btn,
-            #shareVideoBtn {
+            .share-video-btn {
                 width: 100%;
-                max-width: 300px;
             }
             
             .video-header h3 {
@@ -1179,6 +1207,10 @@
             .content-column h4 {
                 font-size: 16px;
             }
+            
+            .video-header h3 {
+                font-size: 18px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1197,10 +1229,6 @@
             .benefit-card,
             .feature-card {
                 padding: 20px;
-            }
-            
-            .testimonial {
-                padding: 25px;
             }
             
             .cta-section {
@@ -1389,76 +1417,142 @@
         </div>
     </section>
 
-    <!-- Video Pembelajaran Section -->
+    <!-- Video Pembelajaran Section - TATA LETAK DIPERBAIKI -->
     <section class="container">
         <div class="video-section">
             <h2 class="section-title">🎬 Video Pembelajaran</h2>
             <p class="section-subtitle">Pelajari konsep logika proposisi melalui video penjelasan yang jelas dan interaktif</p>
             
             <div class="video-container">
-                <div class="video-card">
-                    <div class="video-header">
-                        <h3>
-                            <i class="fas fa-play-circle"></i>
-                            Pengenalan Logika Proposisi
-                            <span class="video-duration">⏱ 10:24</span>
-                        </h3>
-                    </div>
-                    
-                    <div class="video-wrapper">
-                        <iframe 
-                            src="https://www.youtube.com/embed/JzYBRxhhTH8" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen
-                            title="Video Pembelajaran Logika Proposisi">
-                        </iframe>
-                    </div>
-                    
-                    <div class="video-content">
-                        <div class="video-content-grid">
-                            <div class="content-column">
-                                <h4><i class="fas fa-list-check"></i> Materi yang dibahas:</h4>
-                                <ul>
-                                    <li>Definisi Proposisi</li>
-                                    <li>Operator Logika (AND, OR, NOT)</li>
-                                    <li>Tabel Kebenaran</li>
-                                    <li>Implikasi dan Biimplikasi</li>
-                                </ul>
-                            </div>
-                            <div class="content-column">
-                                <h4><i class="fas fa-lightbulb"></i> Tips Belajar:</h4>
-                                <ul>
-                                    <li>Siapkan catatan</li>
-                                    <li>Pause video untuk mencoba soal</li>
-                                    <li>Tonton berulang jika perlu</li>
-                                    <li>Praktik dengan kalkulator</li>
-                                </ul>
-                            </div>
+                <!-- Grid untuk video -->
+                <div class="video-grid-container">
+                    <!-- Video 1 -->
+                    <div class="video-card">
+                        <div class="video-header orange">
+                            <h3>
+                                <i class="fas fa-play-circle"></i>
+                                Pengenalan Logika Proposisi
+                                <span class="video-duration">⏱ 10:24</span>
+                            </h3>
                         </div>
                         
-                        <div class="video-actions">
-                            <button class="btn btn-primary" id="playVideoBtn">
-                                <i class="fas fa-play"></i> Putar Video
-                            </button>
-                            <button class="btn btn-secondary" id="openYoutubeBtn">
-                                <i class="fab fa-youtube"></i> Tonton di YouTube
-                            </button>
-                            <button id="shareVideoBtn">
-                                <i class="fas fa-share"></i> Bagikan
-                            </button>
+                        <div class="video-wrapper">
+                            <iframe 
+                                src="https://www.youtube.com/embed/JzYBRxhhTH8" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen
+                                title="Video Pembelajaran Logika Proposisi">
+                            </iframe>
+                        </div>
+                        
+                        <div class="video-content">
+                            <div class="video-content-grid">
+                                <div class="content-column">
+                                    <h4><i class="fas fa-list-check"></i> Materi yang dibahas:</h4>
+                                    <ul>
+                                        <li>Definisi Proposisi</li>
+                                        <li>Operator Logika (AND, OR, NOT)</li>
+                                        <li>Tabel Kebenaran</li>
+                                        <li>Implikasi dan Biimplikasi</li>
+                                    </ul>
+                                </div>
+                                <div class="content-column">
+                                    <h4><i class="fas fa-lightbulb"></i> Tips Belajar:</h4>
+                                    <ul>
+                                        <li>Siapkan catatan</li>
+                                        <li>Pause video untuk mencoba soal</li>
+                                        <li>Tonton berulang jika perlu</li>
+                                        <li>Praktik dengan kalkulator</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="video-actions">
+                                <button class="btn btn-primary" id="playVideoBtn">
+                                    <i class="fas fa-play"></i> Putar Video
+                                </button>
+                                <button class="btn btn-secondary" id="openYoutubeBtn">
+                                    <i class="fab fa-youtube"></i> Tonton di YouTube
+                                </button>
+                                <button class="share-video-btn" id="shareVideoBtn">
+                                    <i class="fas fa-share"></i> Bagikan
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video 2 -->
+                    <div class="video-card">
+                        <div class="video-header blue">
+                            <h3>
+                                <i class="fas fa-play-circle"></i>
+                                Logika Matematika: Proposisi & Tabel Kebenaran
+                                <span class="video-duration">⏱ 13:57</span>
+                            </h3>
+                        </div>
+                        
+                        <div class="video-wrapper">
+                            <iframe 
+                                src="https://www.youtube.com/embed/Hva9tHsUGQM" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen
+                                title="Video Pembelajaran Logika Proposisi dan Tabel Kebenaran">
+                            </iframe>
+                        </div>
+                        
+                        <div class="video-content">
+                            <div class="video-content-grid">
+                                <div class="content-column">
+                                    <h4><i class="fas fa-list-check"></i> Materi yang dibahas:</h4>
+                                    <ul>
+                                        <li>Konsep Proposisi</li>
+                                        <li>Operator Logika Dasar</li>
+                                        <li>Konstruksi Tabel Kebenaran</li>
+                                        <li>Contoh Soal dan Penyelesaian</li>
+                                    </ul>
+                                </div>
+                                <div class="content-column">
+                                    <h4><i class="fas fa-lightbulb"></i> Keunggulan Video:</h4>
+                                    <ul>
+                                        <li>Penjelasan step-by-step</li>
+                                        <li>Contoh aplikasi nyata</li>
+                                        <li>Visualisasi yang jelas</li>
+                                        <li>Cocok untuk pemula</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="video-actions">
+                                <button class="btn btn-primary" id="playVideo2Btn">
+                                    <i class="fas fa-play"></i> Putar Video
+                                </button>
+                                <button class="btn btn-secondary" id="openYoutube2Btn">
+                                    <i class="fab fa-youtube"></i> Tonton di YouTube
+                                </button>
+                                <button class="share-video-btn" id="shareVideo2Btn">
+                                    <i class="fas fa-share"></i> Bagikan
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <div style="margin-top: 30px; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-                    <h4 style="color: #2c3e50; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                <!-- Deskripsi Video -->
+                <div class="video-description">
+                    <h4>
                         <i class="fas fa-star" style="color: #FF801A;"></i>
-                        Manfaat Menonton Video Ini
+                        Manfaat Menonton Video Pembelajaran
                     </h4>
-                    <p style="color: #6e6d7a; line-height: 1.6; font-size: 15px;">
-                        Video pembelajaran ini dirancang khusus untuk membantu Anda memahami konsep dasar logika proposisi dengan pendekatan visual yang mudah dipahami. 
-                        Cocok untuk pemula maupun yang ingin menyegarkan kembali pengetahuan tentang logika matematika.
+                    <p>
+                        Dua video pembelajaran ini memberikan pendekatan yang berbeda namun saling melengkapi dalam memahami logika proposisi. 
+                        <span class="highlight">Video pertama</span> fokus pada pengenalan konsep dasar dan operator logika, sementara 
+                        <span class="highlight">video kedua</span> memberikan penjelasan mendalam tentang tabel kebenaran dengan contoh aplikasi nyata.
+                    </p>
+                    <p>
+                        Kedua video cocok untuk pemula maupun yang ingin menyegarkan kembali pengetahuan tentang logika matematika. 
+                        Dengan menonton kedua video ini, Anda akan mendapatkan pemahaman yang komprehensif tentang dasar-dasar logika proposisi.
                     </p>
                 </div>
             </div>
@@ -1610,8 +1704,6 @@
         </div>
     </section>
 
-    <!-- Testimonial Section -->
-
     <!-- CTA Section -->
     <section class="container">
         <div class="cta-section">
@@ -1646,7 +1738,7 @@
                     <strong>Kelompok 1:</strong> Hawari, Abimanyu, Rifka
                 </div>
                 <p class="copyright">
-                    &copy; 2026 Logika Proposisi - Hak cipta dilindungi undang-undang
+                    &copy; 2024 Logika Proposisi - Hak cipta dilindungi undang-undang
                 </p>
             </div>
         </div>
@@ -1711,8 +1803,8 @@
                 });
             }
             
-            // Video Section Interactions
-            const videoIframe = document.querySelector('.video-wrapper iframe');
+            // Video Section Interactions - Video 1
+            const videoIframe1 = document.querySelector('.video-card:first-child .video-wrapper iframe');
             const playVideoBtn = document.getElementById('playVideoBtn');
             const openYoutubeBtn = document.getElementById('openYoutubeBtn');
             const shareVideoBtn = document.getElementById('shareVideoBtn');
@@ -1720,15 +1812,15 @@
             if (playVideoBtn) {
                 playVideoBtn.addEventListener('click', function() {
                     // Scroll to video
-                    document.querySelector('.video-section').scrollIntoView({ 
+                    document.querySelector('.video-card:first-child').scrollIntoView({ 
                         behavior: 'smooth',
                         block: 'center'
                     });
                     
                     // Add autoplay to video
-                    const currentSrc = videoIframe.src;
+                    const currentSrc = videoIframe1.src;
                     if (!currentSrc.includes('autoplay=1')) {
-                        videoIframe.src = currentSrc.includes('?') 
+                        videoIframe1.src = currentSrc.includes('?') 
                             ? currentSrc + '&autoplay=1' 
                             : currentSrc + '?autoplay=1';
                     }
@@ -1761,6 +1853,63 @@
                     } else {
                         // Fallback for browsers that don't support Web Share API
                         const shareUrl = `https://www.youtube.com/watch?v=JzYBRxhhTH8`;
+                        navigator.clipboard.writeText(shareUrl).then(() => {
+                            alert('Link video telah disalin ke clipboard!');
+                        });
+                    }
+                });
+            }
+            
+            // Video Section Interactions - Video 2
+            const videoIframe2 = document.querySelector('.video-card:nth-child(2) .video-wrapper iframe');
+            const playVideoBtn2 = document.getElementById('playVideo2Btn');
+            const openYoutubeBtn2 = document.getElementById('openYoutube2Btn');
+            const shareVideoBtn2 = document.getElementById('shareVideo2Btn');
+            
+            if (playVideoBtn2) {
+                playVideoBtn2.addEventListener('click', function() {
+                    // Scroll to video
+                    document.querySelector('.video-card:nth-child(2)').scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                    
+                    // Add autoplay to video
+                    const currentSrc = videoIframe2.src;
+                    if (!currentSrc.includes('autoplay=1')) {
+                        videoIframe2.src = currentSrc.includes('?') 
+                            ? currentSrc + '&autoplay=1' 
+                            : currentSrc + '?autoplay=1';
+                    }
+                    
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memutar...';
+                    setTimeout(() => {
+                        this.innerHTML = '<i class="fas fa-play"></i> Putar Video';
+                    }, 1000);
+                });
+            }
+            
+            if (openYoutubeBtn2) {
+                openYoutubeBtn2.addEventListener('click', function() {
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Membuka...';
+                    setTimeout(() => {
+                        window.open('https://www.youtube.com/watch?v=Hva9tHsUGQM', '_blank');
+                        this.innerHTML = '<i class="fab fa-youtube"></i> Tonton di YouTube';
+                    }, 500);
+                });
+            }
+            
+            if (shareVideoBtn2) {
+                shareVideoBtn2.addEventListener('click', function() {
+                    if (navigator.share) {
+                        navigator.share({
+                            title: 'Logika Matematika: Proposisi dan Tabel Kebenaran',
+                            text: 'Pelajari logika proposisi dan tabel kebenaran dengan mudah melalui video ini!',
+                            url: 'https://www.youtube.com/watch?v=Hva9tHsUGQM'
+                        });
+                    } else {
+                        // Fallback for browsers that don't support Web Share API
+                        const shareUrl = `https://www.youtube.com/watch?v=Hva9tHsUGQM`;
                         navigator.clipboard.writeText(shareUrl).then(() => {
                             alert('Link video telah disalin ke clipboard!');
                         });
@@ -1807,8 +1956,8 @@
                 });
             }, observerOptions);
             
-            // Observe feature cards
-            document.querySelectorAll('.feature-card, .benefit-card, .application-item').forEach(card => {
+            // Observe feature cards, benefit cards, and video cards
+            document.querySelectorAll('.feature-card, .benefit-card, .application-item, .video-card').forEach(card => {
                 card.style.opacity = '0';
                 card.style.transform = 'translateY(20px)';
                 card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
@@ -1829,7 +1978,7 @@
             });
             
             // Add loading animation for buttons
-            document.querySelectorAll('.btn, .feature-link, .cta-button').forEach(button => {
+            document.querySelectorAll('.btn, .feature-link, .cta-button, .share-video-btn').forEach(button => {
                 button.addEventListener('click', function(e) {
                     if (this.getAttribute('href') === '#' || this.tagName === 'BUTTON') {
                         const originalText = this.innerHTML;
@@ -1850,6 +1999,24 @@
                     icon.classList.add('fa-bars');
                     menuToggle.setAttribute('aria-expanded', 'false');
                 }
+            });
+            
+            // Auto-play first video when it comes into view
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Optional: You could auto-play video when it's 50% in view
+                        // const videoIframe = entry.target.querySelector('iframe');
+                        // if (videoIframe && !videoIframe.src.includes('autoplay=1')) {
+                        //     videoIframe.src += '&autoplay=1&mute=1';
+                        // }
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            // Observe video cards
+            document.querySelectorAll('.video-card').forEach(card => {
+                videoObserver.observe(card);
             });
         });
         
@@ -1873,6 +2040,20 @@
                     }
                 }
             }, 250);
+        });
+        
+        // Initialize animations on page load
+        window.addEventListener('load', function() {
+            // Animate logic symbols
+            const symbols = document.querySelectorAll('.logic-symbol');
+            symbols.forEach((symbol, index) => {
+                setTimeout(() => {
+                    symbol.style.transform = 'scale(1.1)';
+                    setTimeout(() => {
+                        symbol.style.transform = 'scale(1)';
+                    }, 300);
+                }, index * 200);
+            });
         });
     </script>
 </body>
